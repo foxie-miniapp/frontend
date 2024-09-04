@@ -46,7 +46,7 @@ const Bottom = () => {
     if (currentRoute) {
       setCurrentRoute(currentRoute)
     }
-  }, [currentRoute])
+  }, [])
   return (
     <div className="flex w-full flex-row items-center justify-around py-4">
       {ListNavigation.map((route, index) => {

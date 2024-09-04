@@ -5,6 +5,7 @@ import ReferralPage from './pages/referral'
 import WalletPage from './pages/wallet'
 import MainLayout from './components/layout'
 
+
 const App = () => {
   return (
     <>
