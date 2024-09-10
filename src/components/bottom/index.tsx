@@ -48,7 +48,7 @@ const Bottom = () => {
     }
   }, [])
   return (
-    <div className="flex w-full flex-row items-center justify-around p-2">
+    <div className="flex w-full flex-row items-center justify-around px-2">
       {ListNavigation.map((route, index) => {
         return (
           <Link
