@@ -1,3 +1,4 @@
+import ButtonClaim from '@/components/commons/button_claim'
 import { useAuth } from '@/hooks/useAuth'
 import { BsLightningCharge } from 'react-icons/bs'
 
@@ -47,7 +48,9 @@ const HomePage = () => {
       </div>
 
       <div className="flex w-full flex-col items-center gap-1">
-        <h1 className="text-[40px] leading-[40px] font-bold text-yellow-600">999,999</h1>
+        <h1 className="text-[40px] font-bold leading-[40px] text-yellow-600">
+          999,999
+        </h1>
 
         <div className="flex flex-row items-center gap-1 text-[16px] font-bold text-yellow-300">
           <div className="h-6 w-6">
@@ -61,10 +64,8 @@ const HomePage = () => {
         </div>
       </div>
 
-      <div className="h-10 w-full px-5">
-        <button className="flex h-full w-full items-center justify-center rounded-lg bg-yellow-300 py-4 text-center font-bold">
-          Claim Reward
-        </button>
+      <div className="h-[52px] w-full px-5">
+        <ButtonClaim title="Claim Rewards" onClick={() => {}} />
       </div>
     </div>
   )
