@@ -8,25 +8,8 @@ const Preloader = () => {
       <div className="absolute w-[535.812px] h-[310.28px] bg-[#C33D00] rounded-[535.812px] blur-[100px] top-0 -translate-y-1/2 left-1/2 transform -translate-x-1/2">
       </div>
       <img src="/images/preloader/bg.png" alt="Group_1" className="absolute inset-0 mix-blend-soft-light" />
-      <div className="w-[280px] h-[280px] relative mx-auto">
-        <div className="absolute bottom-[20%] left-1/2 transform -translate-x-1/2 translate-y-1/2">
-          <svg xmlns="http://www.w3.org/2000/svg" width="414" height="324" viewBox="0 0 414 324" fill="none">
-            <g style={{
-              mixBlendMode: 'plus-lighter',
-            }
-            } filter="url(#filter0_f_39_4361)">
-              <ellipse cx="210.449" cy="162.065" rx="124.492" ry="51.3159" fill="#FFC247" />
-            </g>
-            <defs>
-              <filter id="filter0_f_39_4361" x="-24.2797" y="0.512566" width="469.457" height="323.104" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                <feFlood flood-opacity="0" result="BackgroundImageFix" />
-                <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
-                <feGaussianBlur stdDeviation="55.1181" result="effect1_foregroundBlur_39_4361" />
-              </filter>
-            </defs>
-          </svg>
-        </div>
-        <img src="/images/preloader/subtract.svg" alt="subtract" className="absolute" />
+      <div className="w-[560px] h-[280px] relative mx-auto">
+        <img src="/images/preloader/Image.svg" alt="subtract" className="absolute" />
       </div>
       <div className="flex flex-col gap-8 px-5 relative z-10">
         <div className="flex flex-col px-4 gap-3 items-center">
