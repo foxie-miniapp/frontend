@@ -6,3 +6,30 @@
   font-family: 'Crotal';
   src: url('/fonts/crotal.ttf');
 }
+.golden-text {
+  background: linear-gradient(270deg, #fee45a -0.17%, #fea613 105.3%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.circle-link {
+  border-radius: var(--radius-Round, 999px);
+  border: 1px solid rgba(255, 255, 255, 0.147);
+  background: radial-gradient(
+    101.3% 100% at 50% 100%,
+    rgba(255, 183, 32, 0.35) 0%,
+    rgba(255, 241, 213, 0.08) 73.5%
+  );
+  transition: all 0.3s ease; /* Smooth animation on hover */
+}
+
+.circle-link:hover {
+  background: radial-gradient(
+    101.3% 100% at 50% 100%,
+    rgba(255, 183, 32, 0.6) 0%,
+    rgba(255, 241, 213, 0.2) 73.5%
+  );
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  transform: scale(1.1); /* Slightly increase size on hover */
+}

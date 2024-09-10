@@ -1,5 +1,6 @@
 import { Outlet } from 'react-router-dom'
 import Bottom from '../bottom'
+import Preloader from '../preloader'
 
 const MainLayout = () => {
   return (

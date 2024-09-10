@@ -8,7 +8,6 @@ import { useAuth } from './hooks/useAuth'
 import { useEffect } from 'react'
 import { User, WebAppParams } from '../types/dataType'
 import WebApp from '@twa-dev/sdk'
-import AuthPage from './pages/auth'
 
 const App = () => {
   const decodeQueryString = (queryString: string): WebAppParams => {
