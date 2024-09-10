@@ -10,7 +10,7 @@ const HomePage = () => {
         <div className="flex flex-row items-center justify-between gap-2 rounded-xl border p-[12px_16px_12px_12px]">
           <div className="h-8 w-8 overflow-hidden rounded-full border bg-[#F9EED8]">
             <img
-              src="/public/images/fox_avatar.png"
+              src="/images/fox_avatar.png"
               className="h-full w-full object-cover"
               alt="foxie"
             />
@@ -39,7 +39,7 @@ const HomePage = () => {
       <div className="mx-auto flex h-[280px] w-[280px] items-center justify-center overflow-hidden rounded-full border-[6px] border-[#FFB720]">
         <div className="relative h-[168px] w-[165px] overflow-hidden">
           <img
-            src="/public/images/fox_center.svg"
+            src="/images/fox_center.svg"
             alt="fox"
             className="h-full w-full"
           />
@@ -52,7 +52,7 @@ const HomePage = () => {
         <div className="flex flex-row items-center gap-1 text-[16px] font-bold text-yellow-300">
           <div className="h-6 w-6">
             <img
-              src="/public/icons/logo.svg"
+              src="/icons/logo.svg"
               className="h-full w-full object-cover"
               alt="logo"
             />

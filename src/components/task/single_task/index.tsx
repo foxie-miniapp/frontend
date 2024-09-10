@@ -27,7 +27,7 @@ const SingleTask = ({ title, icon, points }: SingleTaskProps) => {
           <div className="flex flex-row items-center gap-1 text-[14px] font-bold text-yellow-300">
             <div className="h-4 w-4">
               <img
-                src="/public/icons/logo.svg"
+                src="/icons/logo.svg"
                 className="h-full w-full object-cover"
                 alt="logo"
               />

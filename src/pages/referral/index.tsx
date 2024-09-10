@@ -7,7 +7,7 @@ const ReferralPage = () => {
       <div className="flex flex-col items-center gap-6">
         <div className="h-[160px] w-[160px]">
           <img
-            src="/public/images/friend_bonus.png"
+            src="/images/friend_bonus.png"
             alt=""
             className="h-full w-full object-cover"
           />

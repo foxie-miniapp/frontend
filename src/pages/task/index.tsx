@@ -15,7 +15,7 @@ const TaskPage = () => {
       <div className="flex flex-col items-center gap-6">
         <div className="h-[160px] w-[150px]">
           <img
-            src="/public/images/task_bag.png"
+            src="/images/task_bag.png"
             className="h-full w-full object-cover"
             alt="logo"
           />

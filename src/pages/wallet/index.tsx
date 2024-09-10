@@ -6,7 +6,7 @@ const WalletPage = () => {
       <div className="flex flex-col items-center gap-6">
         <div className="h-[160px] w-[160px]">
           <img
-            src="/public/images/wallet.png"
+            src="/images/wallet.png"
             alt=""
             className="h-full w-full object-cover"
           />
@@ -25,7 +25,7 @@ const WalletPage = () => {
       <button className="flex flex-row items-center gap-3 rounded-[16px] bg-[linear-gradient(0deg,rgba(241,236,212,0.08),rgba(241,236,212,0.08)),linear-gradient(90deg,rgba(254,228,90,0.2)_0%,rgba(254,228,90,0)_100%);] px-2 py-4 ">
         <div className="h-8 w-8 overflow-hidden rounded-full">
           <img
-            src="/public/icons/ton.svg"
+            src="/icons/ton.svg"
             alt="ton"
             className="h-full w-full object-cover"
           />
