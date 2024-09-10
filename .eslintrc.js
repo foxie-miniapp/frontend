@@ -33,6 +33,12 @@ module.exports = {
     'plugin:react-hooks/recommended',
     'plugin:tailwindcss/recommended'
   ],
+  'prettier/prettier': [
+    'error',
+    {
+      endOfLine: 'auto'
+    }
+  ],
   rules: {
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'warn',

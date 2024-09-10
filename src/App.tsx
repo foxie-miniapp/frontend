@@ -1,10 +1,10 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import HomePage from './pages/home'
-import TaskPage from './pages/task'
-import ReferralPage from './pages/referral'
-import WalletPage from './pages/wallet'
-import MainLayout from './components/layout'
 
+import MainLayout from './components/layout'
+import HomePage from './pages/home'
+import ReferralPage from './pages/referral'
+import TaskPage from './pages/task'
+import WalletPage from './pages/wallet'
 
 const App = () => {
   return (
