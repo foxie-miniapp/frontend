@@ -1,48 +1,70 @@
+import { useAuth } from '@/hooks/useAuth'
+import { BsLightningCharge } from 'react-icons/bs'
+
 const HomePage = () => {
+  const { userData } = useAuth()
   const progess = 65
   return (
-    <div className="flex h-full flex-col items-center justify-between px-2 py-4 text-white">
-      <div className="flex w-full flex-col items-end gap-1">
-        <div className="flex w-full flex-row items-center justify-between px-2 ">
-          <div className="flex flex-row items-center gap-1">
-            <div className="h-[48px] w-[48px] rounded-full bg-white">
-              <img
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnpGKwDtwKnC55GHET0vagaLSHePZIPhKJgQ&s"
-                alt="avatar"
-                className="h-full w-full rounded-full object-cover"
-              />
-            </div>
-            <p className=" text-xl font-bold">@frey</p>
+    <div className="flex h-full flex-col justify-between py-6">
+      <div className="flex flex-col gap-2 px-5">
+        <div className="flex flex-row items-center justify-between gap-2 rounded-xl border p-[12px_16px_12px_12px]">
+          <div className="h-8 w-8 overflow-hidden rounded-full border bg-[#F9EED8]">
+            <img
+              src="/public/images/fox_avatar.png"
+              className="h-full w-full object-cover"
+              alt="foxie"
+            />
           </div>
-          <h2 className=" text-xl font-bold text-white">
-            1250 <span className=" text-white/50">$foxie</span>
-          </h2>
-        </div>
-        <button className="rounded-xl bg-white px-3 py-1 font-bold text-black">
-          Claim Rewards
-        </button>
-      </div>
-      <div className="flex flex-col items-center gap-1">
-        <div className="h-[250px] w-[250px]">
-          <img
-            src="/public/images/demo.gif"
-            alt="fox"
-            className="h-full w-full object-contain"
-          />
+          <div className="w-full flex-1 text-base font-semibold text-white">
+            {userData?.user.username}
+          </div>
+
+          <h3 className="text-[16px] font-semibold text-[#FEE45A]">Level 17</h3>
         </div>
 
-        <p className=" font-semibold">foxiename</p>
-      </div>
-      <div className="flex w-full flex-row items-center gap-2 px-2">
-        <p className=" whitespace-nowrap text-sm font-bold">LV 17</p>
-        <div className="w-full overflow-hidden rounded-md border bg-transparent">
-          <div
-            className=" bg-white p-1 text-center text-sm font-medium leading-none text-black"
-            style={{ width: `${progess}%` }}
-          >
-            {progess}%
+        <div className="flex flex-col gap-1">
+          <div className="flex flex-row items-center gap-1 font-bold text-white">
+            <BsLightningCharge className="text-yellow-500" /> 800/1700
+          </div>
+
+          <div className="h-2 w-full overflow-hidden rounded-lg bg-white/10 ">
+            <div
+              className={`h-full  rounded-lg bg-[#FEB86C]`}
+              style={{ width: `${progess}%` }}
+            />
           </div>
         </div>
+      </div>
+
+      <div className="mx-auto flex h-[280px] w-[280px] items-center justify-center overflow-hidden rounded-full border-[6px] border-[#FFB720]">
+        <div className="relative h-[168px] w-[165px] overflow-hidden">
+          <img
+            src="/public/images/fox_center.svg"
+            alt="fox"
+            className="h-full w-full"
+          />
+        </div>
+      </div>
+
+      <div className="flex w-full flex-col items-center gap-1">
+        <h1 className="text-[40px] leading-[40px] font-bold text-yellow-600">999,999</h1>
+
+        <div className="flex flex-row items-center gap-1 text-[16px] font-bold text-yellow-300">
+          <div className="h-6 w-6">
+            <img
+              src="/public/icons/logo.svg"
+              className="h-full w-full object-cover"
+              alt="logo"
+            />
+          </div>
+          $FOXIE
+        </div>
+      </div>
+
+      <div className="h-10 w-full px-5">
+        <button className="flex h-full w-full items-center justify-center rounded-lg bg-yellow-300 py-4 text-center font-bold">
+          Claim Reward
+        </button>
       </div>
     </div>
   )

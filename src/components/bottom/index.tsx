@@ -48,17 +48,19 @@ const Bottom = () => {
     }
   }, [])
   return (
-    <div className="flex w-full flex-row items-center justify-around py-4">
+    <div className="flex w-full flex-row items-center justify-around p-2">
       {ListNavigation.map((route, index) => {
         return (
           <Link
             to={route.route.toString()}
             key={index}
             onClick={() => setCurrentRoute(route)}
-            className="flex flex-col items-center justify-center gap-[2px]"
+            className={`flex flex-col items-center justify-center gap-[2px] w-full mx-2 ${
+              currentRoute.route === route.route && 'border-t-2 border-white py-1'
+            }`}
           >
             <route.icon
-              className={` text-3xl ${
+              className={`  text-base ${
                 currentRoute.route === route.route
                   ? 'text-white'
                   : 'text-white/50'
@@ -66,7 +68,7 @@ const Bottom = () => {
             />
 
             <div
-              className={`text-sm font-semibold ${
+              className={`text-xs ${
                 currentRoute.route === route.route
                   ? 'text-white'
                   : 'text-white/50'

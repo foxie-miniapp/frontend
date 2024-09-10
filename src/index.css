@@ -2,6 +2,10 @@
 @tailwind utilities;
 @tailwind components;
 
+@font-face {
+  font-family: 'Crotal';
+  src: url('/fonts/crotal.ttf');
+}
 .golden-text {
   background: linear-gradient(270deg, #fee45a -0.17%, #fea613 105.3%);
   background-clip: text;
