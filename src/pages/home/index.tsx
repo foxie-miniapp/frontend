@@ -77,7 +77,7 @@ const HomePage = () => {
         </div>
       </div>
 
-      <div className="sticky bottom-[32px] z-10 h-[52px] w-full bg-black px-5 pt-2">
+      <div className="sticky bottom-0 z-10  w-full bg-black px-5 pb-8 pt-2">
         <ButtonClaim
           className="claim-button text-[18px] font-semibold"
           title="Claim Rewards"
