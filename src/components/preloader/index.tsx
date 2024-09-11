@@ -35,13 +35,13 @@ const Preloader = ({ onLoadComplete }: { onLoadComplete: () => void }) => {
   if (!isLoading) return null;
 
   return (
-    <section className="h-screen w-screen bg-black">
+    <section className="h-screen w-screen bg-black overflow-x-hidden">
       <div
-        className="flex flex-col justify-center pb-8 pt-6 gap-[60px] max-w-[414px] mx-auto relative min-w-[414px] h-full overflow-hidden">
+        className="flex flex-col justify-center pb-8 pt-6 gap-[60px] max-w-[414px] mx-auto relative h-full overflow-hidden">
         <div className="absolute w-[535.812px] h-[310.28px] bg-[#C33D00] rounded-[535.812px] blur-[100px] top-0 -translate-y-1/2 left-1/2 transform -translate-x-1/2">
         </div>
         <img src="/images/preloader/bg.png" alt="Group_1" className="absolute inset-0 mix-blend-soft-light" />
-        <div className="w-[560px] h-[280px] relative mx-auto">
+        <div className="w-full h-[280px] relative mx-auto">
           <img src="/images/preloader/Image.svg" alt="subtract" className="absolute" />
         </div>
         <div className="flex flex-col gap-8 px-5 relative z-10">

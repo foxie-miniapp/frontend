@@ -51,3 +51,23 @@ html {
   border: 1px solid rgba(255, 255, 255, 0.6);
   transform: scale(1.1); /* Slightly increase size on hover */
 }
+
+::-webkit-scrollbar {
+  width: 3px;
+  border-radius: 99px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #00000000;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #807c7167;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #000000;
+}
