@@ -1,6 +1,5 @@
 import ButtonClaim from '@/components/commons/button_claim'
 import { useAuth } from '@/hooks/useAuth'
-import { BsLightningCharge } from 'react-icons/bs'
 
 const HomePage = () => {
   const { userData } = useAuth()
