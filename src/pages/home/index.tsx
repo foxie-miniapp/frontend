@@ -13,7 +13,7 @@ const HomePage = () => {
         </div>
         <img src="/images/preloader/bg.png" alt="Group_1" className="absolute inset-0 w-full h-full object-cover mix-blend-soft-light z-0" />
         <div className="flex flex-col gap-8 py-6 relative z-10 w-full">
-          <div className="flex flex-col gap-2 px-5">
+          <div className="flex flex-col gap-4 px-5">
             <div className="flex flex-row items-center justify-between gap-2 rounded-xl border p-[12px_16px_12px_12px]">
               <div className="h-8 w-8 overflow-hidden rounded-full border bg-[#F9EED8]">
                 <img
