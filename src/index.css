@@ -68,6 +68,26 @@ html {
   transform: scale(1.1); /* Slightly increase size on hover */
 }
 
+.pet-circle {
+  border-radius: var(--radius-none, 286.614px);
+  border: var(--spacing-none, 4px) solid rgba(255, 255, 255, 0.3);
+  background: radial-gradient(
+    138.57% 147.83% at 41.54% 0%,
+    rgba(255, 241, 213, 0.052) 0%,
+    rgba(255, 241, 213, 0) 40.62%,
+    #ffb720 98.7%
+  );
+}
+
+.pet-light {
+  border-radius: var(--radius-none, 285.512px);
+  background: #ffc247;
+  mix-blend-mode: plus-lighter;
+  filter: blur(55.118106842041016px);
+  width: 285.512px;
+  height: 98.11px;
+}
+
 .claim-button {
   border-radius: var(--radius-xl, 12px);
   background: linear-gradient(90deg, #fee45a 10.86%, #fea613 101.85%),
@@ -94,4 +114,18 @@ html {
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #000000;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.floating-element {
+  animation: float 3s ease-in-out infinite;
 }

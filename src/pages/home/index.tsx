@@ -45,17 +45,27 @@ const HomePage = () => {
             </div>
           </div>
 
-          <div className="mx-auto flex h-[280px] w-[280px] items-center justify-center overflow-hidden rounded-full border-[6px] border-[#FFB720]">
-            <div className="relative h-[168px] w-[165px] overflow-hidden">
+          <div className="pet-circle floating-element relative z-10 mx-auto flex h-[280px] w-[280px] items-center justify-center rounded-full">
+            <video
+              src="/images/home/fire.mp4"
+              loop
+              muted
+              autoPlay
+              preload="true"
+              className="absolute inset-0 z-0 h-full w-full translate-y-1/2 object-cover mix-blend-lighten"
+              playsInline
+            />
+            <div className="pet-light absolute bottom-0 left-1/2 z-10 -translate-x-1/2"></div>
+            <div className="relative z-10 h-[168px] w-[165px] overflow-hidden">
               <img
-                src="/images/fox_center.svg"
+                src="/images/home/fox_center.svg"
                 alt="fox"
                 className="h-full w-full"
               />
             </div>
           </div>
 
-          <div className="flex w-full flex-col items-center gap-1">
+          <div className="relative z-20 flex w-full flex-col items-center gap-1">
             <h1 className="token-text text-[40px] font-bold">999,999</h1>
             <div className="flex flex-row items-center gap-1 text-[12px] font-medium text-yellow-300">
               <img src="/icons/logo.svg" className="h-4 w-4" alt="logo" />
