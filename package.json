@@ -3,14 +3,20 @@
   "private": true,
   "version": "0.1.0",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build",
+    "dev": "vite --mode=development",
+    "build:dev": "vite build --mode=development",
+    "start:dev": "vite --mode=development",
+    "start:stag": "vite --mode=staging",
+    "build:stag": "vite build --mode=staging",
     "preview": "vite preview",
     "lint": "eslint src --max-warnings=0",
     "types": "tsc --project tsconfig.json --noEmit"
   },
   "dependencies": {
+    "@tanstack/react-query": "^5.55.4",
     "@twa-dev/sdk": "^7.8.0",
+    "axios": "^1.7.7",
+    "immer": "^10.1.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^5.3.0",

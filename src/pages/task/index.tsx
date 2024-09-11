@@ -1,15 +1,20 @@
 import SingleTask from '@/components/task/single_task'
 import { IoLogoInstagram } from 'react-icons/io5'
-import { FaFacebookSquare } from 'react-icons/fa'
+import { FaFacebookSquare, FaTelegram } from 'react-icons/fa'
 import { FiYoutube } from 'react-icons/fi'
 import { BsTwitterX } from 'react-icons/bs'
+import { useFetchQuests } from '@/hooks/use-fetch-quest'
+import useUser from '@/store/user.store'
 
 const TaskPage = () => {
+  const { isLoading, data } = useFetchQuests()
+  const exp = useUser((state) => state.user?.exp)
+
   return (
     <div className="flex h-full w-full flex-col gap-6 px-5 pt-6">
       <div className="flex w-full flex-row items-center justify-between rounded-[12px] bg-[#F1ECD414] p-3 font-semibold text-white">
         <p>Total EXP Claimed</p>
-        <p className="text-sm font-bold text-[#FFB625]">2500 EXP</p>
+        <p className="text-sm font-bold text-[#FFB625]">{exp} EXP</p>
       </div>
 
       <div className="flex flex-col items-center gap-6">
@@ -31,27 +36,11 @@ const TaskPage = () => {
         </div>
       </div>
       <div className="flex flex-col gap-2">
-        <SingleTask
-          icon={<IoLogoInstagram size={24} />}
-          points={200}
-          title="Follow instagram"
-        />
-
-        <SingleTask
-          icon={<FaFacebookSquare size={24} />}
-          points={200}
-          title="Follow Facebook"
-        />
-        <SingleTask
-          icon={<FiYoutube size={24} />}
-          points={200}
-          title="Subcribe Youtube"
-        />
-        <SingleTask
-          icon={<BsTwitterX size={24} />}
-          points={200}
-          title="Follow Twitter"
-        />
+        {isLoading ? (
+          <div>Loading...</div>
+        ) : (
+          data?.map((task) => <SingleTask key={task._id} task={task} />)
+        )}
       </div>
     </div>
   )

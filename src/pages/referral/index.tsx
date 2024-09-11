@@ -1,8 +1,17 @@
 import ButtonClaim from '@/components/commons/button_claim'
 import FriendList from '@/components/referral/friend_invite'
+import InviteButton from '@/components/referral/invite-button'
+import { QUERY_KEYS } from '@/lib/constants/query-key'
+import { getReferents } from '@/services/user'
+import { useQuery } from '@tanstack/react-query'
 import { GoLink } from 'react-icons/go'
 
 const ReferralPage = () => {
+  const { data, isLoading } = useQuery({
+    queryKey: [QUERY_KEYS.USER.REFERENTS],
+    queryFn: getReferents
+  })
+
   return (
     <div className="flex h-full w-full flex-col justify-between gap-6 bg-[#0F010B] px-5 py-4">
       <div className="flex flex-col items-center gap-6">
@@ -25,18 +34,26 @@ const ReferralPage = () => {
       </div>
 
       <div className="flex flex-row items-center justify-between rounded-[12px] bg-[#F1ECD414] p-3 text-[14px] text-[#FFF1C4]">
-        You invited people <p className="font-semibold text-[#FFB625]">3</p>
+        You invited people{' '}
+        <p className="font-semibold text-[#FFB625]">
+          {data?.pagination.totalItems}
+        </p>
       </div>
       <div className="flex flex-1 flex-col gap-2 overflow-y-scroll ">
-        <FriendList /> <FriendList /> <FriendList /> <FriendList />
+        {isLoading ? (
+          <div>Loading...</div>
+        ) : (
+          data?.data?.map((friend) => (
+            <FriendList
+              key={friend._id}
+              name={friend.username}
+              point={friend.points}
+              photoUrl={friend.photoUrl}
+            />
+          ))
+        )}
       </div>
-      <div className="flex w-full flex-row gap-2">
-        <ButtonClaim title="Invite friends" onClick={() => {}} />
-
-        <button className=" flex h-[56px] w-[56px] items-center justify-center rounded-[12px] bg-[linear-gradient(140.91deg,#FFF1C4_9.31%,#FEAD1B_83.97%);]">
-          <GoLink size={24} />
-        </button>
-      </div>
+      <InviteButton />
     </div>
   )
 }
