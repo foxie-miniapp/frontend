@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react'
 
 interface CircleLinkProps {
-  link: string
+  link?: string
   children: ReactNode
 }
 
