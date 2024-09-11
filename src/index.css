@@ -3,9 +3,27 @@
 @tailwind components;
 
 @font-face {
-  font-family: 'Crotal';
-  src: url('/fonts/crotal.ttf');
+  font-family: 'SF';
+  src: url('/fonts/sf_regular.OTF');
+  font-weight: 400;
 }
+
+@font-face {
+  font-family: 'SF';
+  src: url('/fonts/sf_medium.OTF');
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: 'SF';
+  src: url('/fonts/sf_bold.OTF');
+  font-weight: 700;
+}
+
+html {
+  font-family: 'SF', sans-serif;
+}
+
 .golden-text {
   background: linear-gradient(270deg, #fee45a -0.17%, #fea613 105.3%);
   background-clip: text;

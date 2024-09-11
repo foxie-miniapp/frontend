@@ -5,7 +5,7 @@ module.exports = {
   theme: {
     extend: {
        fontFamily: {
-        crotal: ['"Crotal"', "sans-serif"],
+        sf : ['"SF"', "sans-serif"],
       },
     },
   },
