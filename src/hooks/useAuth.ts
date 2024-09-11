@@ -1,5 +1,6 @@
-import { WebAppParams } from './../../types/dataType'
 import { create } from 'zustand'
+
+import { WebAppParams } from './../../types/dataType'
 
 interface AuthState {
   isAuth: boolean

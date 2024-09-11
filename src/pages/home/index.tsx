@@ -1,18 +1,20 @@
 import ButtonClaim from '@/components/commons/button_claim'
 import { useAuth } from '@/hooks/useAuth'
-import { BsLightningCharge } from 'react-icons/bs'
 
 const HomePage = () => {
   const { userData } = useAuth()
   const progress = 65
 
   return (
-    <div className="flex flex-col min-h-screen relative">
-      <div className="flex-grow overflow-x-hidden">
-        <div className="absolute z-0 w-full max-w-[535.812px] h-[310.28px] bg-[#C33D00] rounded-[535.812px] blur-[100px] top-0 -translate-y-1/2 left-1/2 transform -translate-x-1/2">
-        </div>
-        <img src="/images/preloader/bg.png" alt="Group_1" className="absolute inset-0 w-full h-full object-cover mix-blend-soft-light z-0" />
-        <div className="flex flex-col gap-8 py-6 relative z-10 w-full">
+    <div className="relative flex min-h-screen flex-col">
+      <div className="grow overflow-x-hidden">
+        <div className="absolute left-1/2 top-0 z-0 h-[310.28px] w-full max-w-[535.812px] -translate-x-1/2 -translate-y-1/2 rounded-[535.812px] bg-[#C33D00] blur-[100px]"></div>
+        <img
+          src="/images/preloader/bg.png"
+          alt="Group_1"
+          className="absolute inset-0 z-0 h-full w-full object-cover mix-blend-soft-light"
+        />
+        <div className="relative z-10 flex w-full flex-col gap-8 py-6">
           <div className="flex flex-col gap-4 px-5">
             <div className="flex flex-row items-center justify-between gap-2 rounded-xl border p-[12px_16px_12px_12px]">
               <div className="h-8 w-8 overflow-hidden rounded-full border bg-[#F9EED8]">
@@ -22,10 +24,12 @@ const HomePage = () => {
                   alt="foxie"
                 />
               </div>
-              <div className="flex-1 text-base font-medium text-white truncate">
-                {userData?.user.username || "hello"}
+              <div className="flex-1 truncate text-base font-medium text-white">
+                {userData?.user.username || 'hello'}
               </div>
-              <h3 className="text-[16px] font-medium text-[#FEE45A] whitespace-nowrap">Level 17</h3>
+              <h3 className="whitespace-nowrap text-[16px] font-medium text-[#FEE45A]">
+                Level 17
+              </h3>
             </div>
 
             <div className="flex flex-col gap-1">
@@ -69,11 +73,12 @@ const HomePage = () => {
         </div>
       </div>
 
-      <div className="h-[52px] w-full px-5 pt-2 sticky bottom-[32px] bg-black z-10">
+      <div className="sticky bottom-[32px] z-10 h-[52px] w-full bg-black px-5 pt-2">
         <ButtonClaim
           className="text-[18px] font-semibold"
           title="Claim Rewards"
-          onClick={() => { }}
+          // eslint-disable-next-line @typescript-eslint/no-empty-function
+          onClick={() => {}}
         />
       </div>
     </div>

@@ -1,8 +1,9 @@
-import SingleTask from '@/components/task/single_task'
-import { IoLogoInstagram } from 'react-icons/io5'
+import { BsTwitterX } from 'react-icons/bs'
 import { FaFacebookSquare } from 'react-icons/fa'
 import { FiYoutube } from 'react-icons/fi'
-import { BsTwitterX } from 'react-icons/bs'
+import { IoLogoInstagram } from 'react-icons/io5'
+
+import SingleTask from '@/components/task/single_task'
 
 const TaskPage = () => {
   return (

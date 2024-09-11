@@ -1,6 +1,7 @@
+import { GoLink } from 'react-icons/go'
+
 import ButtonClaim from '@/components/commons/button_claim'
 import FriendList from '@/components/referral/friend_invite'
-import { GoLink } from 'react-icons/go'
 
 const ReferralPage = () => {
   return (
@@ -31,7 +32,12 @@ const ReferralPage = () => {
         <FriendList /> <FriendList /> <FriendList /> <FriendList />
       </div>
       <div className="flex w-full flex-row gap-2">
-        <ButtonClaim title="Invite friends" onClick={() => {}} />
+        <ButtonClaim
+          title="Invite friends"
+          onClick={() => {
+            console.log('this is temp')
+          }}
+        />
 
         <button className=" flex h-[56px] w-[56px] items-center justify-center rounded-[12px] bg-[linear-gradient(140.91deg,#FFF1C4_9.31%,#FEAD1B_83.97%);]">
           <GoLink size={24} />
