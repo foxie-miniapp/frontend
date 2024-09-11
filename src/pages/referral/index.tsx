@@ -35,7 +35,7 @@ const ReferralPage = () => {
         <ButtonClaim
           title="Invite friends"
           onClick={() => {
-            console.log('Invite friends')
+            console.log('this is temp')
           }}
         />
 
