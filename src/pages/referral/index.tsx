@@ -1,10 +1,9 @@
-import ButtonClaim from '@/components/commons/button_claim'
+import { useQuery } from '@tanstack/react-query'
+
 import FriendList from '@/components/referral/friend_invite'
 import InviteButton from '@/components/referral/invite-button'
 import { QUERY_KEYS } from '@/lib/constants/query-key'
 import { getReferents } from '@/services/user'
-import { useQuery } from '@tanstack/react-query'
-import { GoLink } from 'react-icons/go'
 
 const ReferralPage = () => {
   const { data, isLoading } = useQuery({
@@ -39,7 +38,7 @@ const ReferralPage = () => {
           {data?.pagination.totalItems}
         </p>
       </div>
-      <div className="flex flex-1 flex-col gap-2 overflow-y-scroll ">
+      <div className="flex flex-1 flex-col gap-2 overflow-y-auto">
         {isLoading ? (
           <div>Loading...</div>
         ) : (

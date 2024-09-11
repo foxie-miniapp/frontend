@@ -1,12 +1,10 @@
+import { GoLink } from 'react-icons/go'
+
 import ButtonClaim from '@/components/commons/button_claim'
 import { appConfigs } from '@/config/app-config'
 import useUser from '@/store/user.store'
-import React from 'react'
-import { GoLink } from 'react-icons/go'
 
-type InviteButtonProps = {}
-
-const InviteButton = (props: InviteButtonProps) => {
+const InviteButton = () => {
   const referralCode = useUser((state) => state.user?.referralCode)
 
   const handleCopyReferralLink = () => {
@@ -24,7 +22,13 @@ const InviteButton = (props: InviteButtonProps) => {
 
   return (
     <div className="flex w-full flex-row gap-2">
-      <ButtonClaim title="Invite friends" onClick={() => {}} />
+      <ButtonClaim
+        title="Invite friends"
+        className="claim-button"
+        onClick={() => {
+          console.log('this is temp')
+        }}
+      />
 
       <button
         className=" flex h-[56px] w-[56px] items-center justify-center rounded-[12px] bg-[linear-gradient(140.91deg,#FFF1C4_9.31%,#FEAD1B_83.97%);]"

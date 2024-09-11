@@ -1,10 +1,11 @@
 import 'index.css'
 
+import { QueryClientProvider } from '@tanstack/react-query'
 import WebApp from '@twa-dev/sdk'
 import { createRoot } from 'react-dom/client'
 
 import App from '@/App'
-import { QueryClientProvider } from '@tanstack/react-query'
+
 import queryClient from './lib/client/query-client'
 
 const container = document.getElementById('root') as HTMLDivElement

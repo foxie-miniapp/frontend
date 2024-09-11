@@ -31,6 +31,13 @@ html {
   -webkit-text-fill-color: transparent;
 }
 
+.token-text {
+  background: linear-gradient(180deg, #ffdb6f 0%, #fff 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 .circle-link {
   border-radius: var(--radius-Round, 999px);
   border: 1px solid rgba(255, 255, 255, 0.147);
@@ -42,6 +49,15 @@ html {
   transition: all 0.3s ease; /* Smooth animation on hover */
 }
 
+.task-claim-btn {
+  border-radius: var(--radius-Round, 999px);
+  background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 0.2) 100%
+    ),
+    rgba(255, 255, 255, 0.12);
+}
 .circle-link:hover {
   background: radial-gradient(
     101.3% 100% at 50% 100%,
@@ -50,4 +66,66 @@ html {
   );
   border: 1px solid rgba(255, 255, 255, 0.6);
   transform: scale(1.1); /* Slightly increase size on hover */
+}
+
+.pet-circle {
+  border-radius: var(--radius-none, 286.614px);
+  border: var(--spacing-none, 4px) solid rgba(255, 255, 255, 0.3);
+  background: radial-gradient(
+    138.57% 147.83% at 41.54% 0%,
+    rgba(255, 241, 213, 0.052) 0%,
+    rgba(255, 241, 213, 0) 40.62%,
+    #ffb720 98.7%
+  );
+}
+
+.pet-light {
+  border-radius: var(--radius-none, 285.512px);
+  background: #ffc247;
+  mix-blend-mode: plus-lighter;
+  filter: blur(55.118106842041016px);
+  width: 285.512px;
+  height: 98.11px;
+}
+
+.claim-button {
+  border-radius: var(--radius-xl, 12px);
+  background: linear-gradient(90deg, #fee45a 10.86%, #fea613 101.85%),
+    linear-gradient(90deg, #fffbc4 0%, #feb696 56.33%, #ff9a8b 100%);
+  box-shadow: 0px 4px 21.1px 2px rgba(255, 225, 179, 0.6),
+    19px -9px 18.9px 0px #fff3bf inset;
+}
+
+::-webkit-scrollbar {
+  width: 3px;
+  border-radius: 99px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #00000000;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #807c7167;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #000000;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.floating-element {
+  animation: float 3s ease-in-out infinite;
 }

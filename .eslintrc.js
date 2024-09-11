@@ -33,12 +33,6 @@ module.exports = {
     'plugin:react-hooks/recommended',
     'plugin:tailwindcss/recommended'
   ],
-  'prettier/prettier': [
-    'error',
-    {
-      endOfLine: 'auto'
-    }
-  ],
   rules: {
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'warn',
@@ -47,6 +41,12 @@ module.exports = {
     'tailwindcss/no-custom-classname': 'warn',
     'tailwindcss/no-contradicting-classname': 'error',
     'simple-import-sort/imports': 'error',
-    'simple-import-sort/exports': 'error'
+    'simple-import-sort/exports': 'error',
+    'prettier/prettier': [
+      'error',
+      {
+        endOfLine: 'auto'
+      }
+    ]
   }
 }

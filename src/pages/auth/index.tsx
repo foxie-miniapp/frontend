@@ -1,4 +1,3 @@
-
 const AuthPage = () => {
   return (
     <div className="h-screen w-screen bg-black">

@@ -1,9 +1,8 @@
+import { useMutation } from '@tanstack/react-query'
+
 import { claimQuest } from '@/services/quest'
 import useQuest, { QuestStatus } from '@/store/quest.store'
 import useUser from '@/store/user.store'
-import { useMutation } from '@tanstack/react-query'
-import React from 'react'
-import { IoChevronForward } from 'react-icons/io5'
 
 type ClaimButtonProps = {
   questId: string
@@ -32,7 +31,7 @@ const ClaimButton = (props: ClaimButtonProps) => {
 
   return (
     <button
-      className="rounded-full bg-white/10 px-6 py-1 font-medium text-white"
+      className="task-claim-btn h-[36px] rounded-full px-6 py-1 text-sm font-medium text-[#FFF1C4] transition-all duration-300 ease-in-out hover:bg-white/20"
       onClick={onClaimQuest}
     >
       Claim

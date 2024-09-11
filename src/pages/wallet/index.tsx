@@ -2,7 +2,7 @@ import { IoChevronForward } from 'react-icons/io5'
 
 const WalletPage = () => {
   return (
-    <div className="flex h-full w-full flex-col px-4 py-6 gap-6">
+    <div className="flex h-full w-full flex-col gap-6 px-4 py-6">
       <div className="flex flex-col items-center gap-6">
         <div className="h-[160px] w-[160px]">
           <img

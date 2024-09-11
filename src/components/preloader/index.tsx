@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from 'react'
+
 import CircleLink from '../circle-link'
 
 const Preloader = () => {
@@ -33,15 +34,15 @@ const Preloader = () => {
   if (!isLoading) return null
 
   return (
-    <section className="h-screen w-screen bg-black">
-      <div className="relative mx-auto flex h-full min-w-[414px] max-w-[414px] flex-col justify-center gap-[60px] overflow-hidden pb-8 pt-6">
-        <div className="absolute left-1/2 top-0 h-[310.28px] w-[535.812px] -translate-x-1/2 -translate-y-1/2 transform rounded-[535.812px] bg-[#C33D00] blur-[100px]"></div>
+    <section className="h-screen w-screen overflow-x-hidden bg-black">
+      <div className="relative mx-auto flex h-full max-w-[414px] flex-col justify-center gap-[60px] overflow-hidden pb-8 pt-6">
+        <div className="absolute left-1/2 top-0 h-[310.28px] w-[535.812px] -translate-x-1/2 -translate-y-1/2 rounded-[535.812px] bg-[#C33D00] blur-[100px]"></div>
         <img
           src="/images/preloader/bg.png"
           alt="Group_1"
           className="absolute inset-0 mix-blend-soft-light"
         />
-        <div className="relative mx-auto h-[280px] w-[560px]">
+        <div className="relative mx-auto h-[280px] w-full">
           <img
             src="/images/preloader/Image.svg"
             alt="subtract"
@@ -106,8 +107,8 @@ const Preloader = () => {
                   fill="none"
                 >
                   <path
-                    fill-rule="evenodd"
-                    clip-rule="evenodd"
+                    fillRule="evenodd"
+                    clipRule="evenodd"
                     d="M12 22.5C17.799 22.5 22.5 17.799 22.5 12C22.5 6.20101 17.799 1.5 12 1.5C6.20101 1.5 1.5 6.20101 1.5 12C1.5 17.799 6.20101 22.5 12 22.5ZM16.2219 6.8115C16.7591 6.57566 17.3334 7.05249 17.2399 7.65659L15.8564 16.5946C15.7723 17.1379 15.1938 17.4212 14.7442 17.1392L10.7355 14.6254C10.3177 14.3634 10.2488 13.7566 10.5961 13.3985L14.1766 9.70697C14.3047 9.57485 14.1412 9.36157 13.9912 9.4652L9.01709 12.9017C8.64939 13.1558 8.19344 13.2251 7.77236 13.091L5.5661 12.3884C5.1666 12.2612 5.13842 11.6778 5.52361 11.5086L16.2219 6.8115Z"
                     fill="white"
                   />

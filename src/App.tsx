@@ -1,18 +1,19 @@
+import { useMutation } from '@tanstack/react-query'
 import WebApp from '@twa-dev/sdk'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+
 import MainLayout from './components/layout'
 import Preloader from './components/preloader'
+import { StorageKey } from './lib/constants/storage'
+import { setStorageData } from './lib/helpers/storage'
+import { UserLoginPayload } from './lib/types/user-action'
 import HomePage from './pages/home'
 import ReferralPage from './pages/referral'
 import TaskPage from './pages/task'
 import WalletPage from './pages/wallet'
-import { useMutation } from '@tanstack/react-query'
-import { UserLoginPayload } from './lib/types/user-action'
 import { login } from './services/user'
-import { setStorageData } from './lib/helpers/storage'
-import { StorageKey } from './lib/constants/storage'
 import useUser from './store/user.store'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 const App = () => {
   const { user, setUser, isLoading, setLoading } = useUser((state) => ({
@@ -32,11 +33,6 @@ const App = () => {
   })
 
   useEffect(() => {
-    console.log({
-      webApp: WebApp.initDataUnsafe,
-      user: user,
-      appUrl: WebApp.initDataUnsafe.start_param
-    })
     if (!user) {
       _login({
         username: WebApp.initDataUnsafe.user?.username || '',
