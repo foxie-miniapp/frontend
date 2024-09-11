@@ -1,6 +1,7 @@
 import WebApp from '@twa-dev/sdk'
 import { useEffect, useState } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
+
 import { User, WebAppParams } from '../types/dataType'
 import MainLayout from './components/layout'
 import Preloader from './components/preloader'
@@ -33,16 +34,17 @@ const App = () => {
     if (WebApp.initData != '') setUserData(decodeQueryString(WebApp.initData))
   }, [])
 
-  const [screenLoading, setScreenLoading] = useState(true);
+  const [screenLoading, setScreenLoading] = useState(true)
 
   const handleLoadComplete = () => {
-    setScreenLoading(false);
-  };
+    setScreenLoading(false)
+  }
 
   return (
     <>
-      {screenLoading ?
-        <Preloader onLoadComplete={handleLoadComplete} /> :
+      {screenLoading ? (
+        <Preloader onLoadComplete={handleLoadComplete} />
+      ) : (
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<MainLayout />}>
@@ -53,7 +55,7 @@ const App = () => {
             </Route>
           </Routes>
         </BrowserRouter>
-      }
+      )}
     </>
   )
 }
