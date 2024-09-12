@@ -50,7 +50,7 @@ const TaskPage = () => {
       </div>
 
       <div className="flex flex-col items-center gap-2">
-        <div className="relative h-[160px]">
+        <div className="relative min-h-[160px]">
           <div className="absolute left-1/2 top-0 z-0 -translate-x-1/2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
