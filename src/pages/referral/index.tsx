@@ -1,7 +1,5 @@
 import { useQuery } from '@tanstack/react-query'
-import { GoLink } from 'react-icons/go'
 
-import ButtonClaim from '@/components/commons/button_claim'
 import FriendList from '@/components/referral/friend_invite'
 import InviteButton from '@/components/referral/invite-button'
 import { QUERY_KEYS } from '@/lib/constants/query-key'
@@ -114,7 +112,7 @@ const ReferralPage = () => {
         <div className="flex flex-row items-center justify-between rounded-[12px] bg-[#F1ECD414] p-3 text-[14px] text-[#FFF1C4]">
           You invited people{' '}
           <p className="font-semibold text-[#FFB625]">
-            {data?.pagination.totalItems}
+            {data?.pagination.totalItems || 0}
           </p>
         </div>
         <div className="flex flex-1 flex-col gap-2 overflow-y-auto">

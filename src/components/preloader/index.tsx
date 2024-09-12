@@ -4,14 +4,13 @@ import CircleLink from '../circle-link'
 
 const Preloader = () => {
   const [progress, setProgress] = useState(0)
-  const [isLoading, setIsLoading] = useState(true)
 
   const incrementProgress = useCallback(() => {
     setProgress((prevProgress) => {
-      if (prevProgress >= 100) {
-        return 100
+      if (prevProgress >= 99) {
+        return 99
       }
-      return Math.min(prevProgress + 1, 100)
+      return Math.min(prevProgress + 1, 99)
     })
   }, [])
 
@@ -20,18 +19,6 @@ const Preloader = () => {
 
     return () => clearInterval(timer)
   }, [incrementProgress])
-
-  useEffect(() => {
-    if (progress === 100) {
-      const delayTimer = setTimeout(() => {
-        setIsLoading(false)
-      }, 1000) // 1 second delay
-
-      return () => clearTimeout(delayTimer)
-    }
-  }, [progress])
-
-  if (!isLoading) return null
 
   return (
     <section className="h-screen w-screen overflow-x-hidden bg-black">

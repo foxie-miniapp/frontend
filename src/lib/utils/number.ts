@@ -1,4 +1,6 @@
 export const localeNumber = (number: number) => {
+  if (!number) return '0'
+
   return number.toLocaleString('en-US')
 }
 
