@@ -8,7 +8,7 @@ const HomePage = () => {
 
   console.log('user', user)
   return (
-    <div className="relative flex min-h-screen flex-col">
+    <div className="relative flex min-h-screen flex-col bg-black">
       <div className="grow overflow-hidden">
         <div className="absolute left-1/2 top-0 z-0 h-[310.28px] w-full max-w-[535.812px] -translate-x-1/2 -translate-y-1/2 rounded-[535.812px] bg-[#C33D00] blur-[100px]"></div>
         <img
