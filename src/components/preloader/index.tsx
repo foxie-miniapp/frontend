@@ -40,7 +40,7 @@ const Preloader = () => {
         <img
           src="/images/preloader/bg.png"
           alt="Group_1"
-          className="absolute inset-0 mix-blend-soft-light"
+          className="mix-blend-soft-light-override absolute inset-0"
         />
         <div className="relative z-10 mx-auto h-[280px] w-[280px]">
           <img
@@ -48,7 +48,7 @@ const Preloader = () => {
             alt="subtract"
             className="absolute inset-0 z-[1]"
           />
-          <div className="absolute bottom-[-15%] left-1/2 z-0 h-[102.632px] w-[248.985px] -translate-x-1/2 rounded-full bg-[#FFC247] mix-blend-plus-lighter blur-[55.118106842041016px]"></div>
+          <div className="mix-blend-plus-lighter-override absolute bottom-[-15%] left-1/2 z-0 h-[102.632px] w-[248.985px] -translate-x-1/2 rounded-full bg-[#FFC247] blur-[55.118106842041016px]"></div>
         </div>
         <div className="relative z-10 flex flex-col gap-8 px-5">
           <div className="flex flex-col items-center gap-3 px-4">

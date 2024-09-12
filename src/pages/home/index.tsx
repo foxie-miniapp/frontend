@@ -14,7 +14,7 @@ const HomePage = () => {
         <img
           src="/images/preloader/bg.png"
           alt="Group_1"
-          className="absolute inset-0 z-0 h-full w-full object-cover mix-blend-soft-light"
+          className="mix-blend-soft-light-override absolute inset-0 z-0 h-full w-full object-cover"
         />
         <div className="relative z-10 flex w-full flex-col gap-8 py-6">
           <div className="flex flex-col gap-4 px-5">
@@ -54,7 +54,7 @@ const HomePage = () => {
               muted
               autoPlay
               preload="true"
-              className="absolute inset-0 z-0 h-full w-full translate-y-1/2 object-cover mix-blend-lighten"
+              className="mix-blend-lighten-override absolute inset-0 z-0 h-full w-full translate-y-1/2 object-cover"
               playsInline
             />
             <div className="pet-light absolute bottom-0 left-1/2 z-10 -translate-x-1/2"></div>
