@@ -129,3 +129,70 @@ html {
 .floating-element {
   animation: float 3s ease-in-out infinite;
 }
+
+@layer utilities {
+  .mix-blend-normal {
+    mix-blend-mode: normal;
+    -webkit-mix-blend-mode: normal;
+  }
+  .mix-blend-multiply {
+    mix-blend-mode: multiply;
+    -webkit-mix-blend-mode: multiply;
+  }
+  .mix-blend-screen {
+    mix-blend-mode: screen;
+    -webkit-mix-blend-mode: screen;
+  }
+  .mix-blend-overlay {
+    mix-blend-mode: overlay;
+    -webkit-mix-blend-mode: overlay;
+  }
+  .mix-blend-darken {
+    mix-blend-mode: darken;
+    -webkit-mix-blend-mode: darken;
+  }
+  .mix-blend-lighten {
+    mix-blend-mode: lighten;
+    -webkit-mix-blend-mode: lighten;
+  }
+  .mix-blend-color-dodge {
+    mix-blend-mode: color-dodge;
+    -webkit-mix-blend-mode: color-dodge;
+  }
+  .mix-blend-color-burn {
+    mix-blend-mode: color-burn;
+    -webkit-mix-blend-mode: color-burn;
+  }
+  .mix-blend-hard-light {
+    mix-blend-mode: hard-light;
+    -webkit-mix-blend-mode: hard-light;
+  }
+  .mix-blend-soft-light {
+    mix-blend-mode: soft-light;
+    -webkit-mix-blend-mode: soft-light;
+  }
+  .mix-blend-difference {
+    mix-blend-mode: difference;
+    -webkit-mix-blend-mode: difference;
+  }
+  .mix-blend-exclusion {
+    mix-blend-mode: exclusion;
+    -webkit-mix-blend-mode: exclusion;
+  }
+  .mix-blend-hue {
+    mix-blend-mode: hue;
+    -webkit-mix-blend-mode: hue;
+  }
+  .mix-blend-saturation {
+    mix-blend-mode: saturation;
+    -webkit-mix-blend-mode: saturation;
+  }
+  .mix-blend-color {
+    mix-blend-mode: color;
+    -webkit-mix-blend-mode: color;
+  }
+  .mix-blend-luminosity {
+    mix-blend-mode: luminosity;
+    -webkit-mix-blend-mode: luminosity;
+  }
+}
