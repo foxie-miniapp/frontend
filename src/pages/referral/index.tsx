@@ -12,7 +12,7 @@ const ReferralPage = () => {
   })
 
   return (
-    <div className="relative flex h-full w-full flex-col justify-between gap-6 bg-[#0F010B] px-5 pt-4">
+    <div className="relative flex h-full w-full flex-col justify-between gap-6 bg-[#0F010B] px-5 pt-6">
       <div className="absolute left-1/2 top-[-20%] -translate-x-1/2">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -95,7 +95,7 @@ const ReferralPage = () => {
             <img
               src="/images/referral.png"
               alt=""
-              className="relative h-full w-full object-cover"
+              className="relative h-[160px] w-[160px] object-cover"
             />
           </div>
 
