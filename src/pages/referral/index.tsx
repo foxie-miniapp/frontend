@@ -14,7 +14,43 @@ const ReferralPage = () => {
   })
 
   return (
-    <div className="flex h-full w-full flex-col justify-between gap-6 bg-[#0F010B] px-5 pt-4">
+    <div className="relative flex h-full w-full flex-col justify-between gap-6 bg-[#0F010B] px-5 pt-4">
+      <div className="absolute left-1/2 top-[-20%] -translate-x-1/2">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="414"
+          height="335"
+          viewBox="0 0 414 335"
+          fill="none"
+        >
+          <g filter="url(#filter0_f_39_4386)">
+            <ellipse cx="204.5" cy="79.5" rx="127.5" ry="55.5" fill="#C33D00" />
+          </g>
+          <defs>
+            <filter
+              id="filter0_f_39_4386"
+              x="-123"
+              y="-176"
+              width="655"
+              height="511"
+              filterUnits="userSpaceOnUse"
+              colorInterpolationFilters="sRGB"
+            >
+              <feFlood floodOpacity="0" result="BackgroundImageFix" />
+              <feBlend
+                mode="normal"
+                in="SourceGraphic"
+                in2="BackgroundImageFix"
+                result="shape"
+              />
+              <feGaussianBlur
+                stdDeviation="100"
+                result="effect1_foregroundBlur_39_4386"
+              />
+            </filter>
+          </defs>
+        </svg>
+      </div>
       <div className="flex flex-col gap-6">
         <div className="flex flex-col items-center gap-6">
           <div className="group relative inline-flex h-[160px]  w-[160px]   flex-1">
@@ -97,18 +133,8 @@ const ReferralPage = () => {
         </div>
       </div>
       <div className="sticky bottom-0 z-10 flex  w-full flex-row items-center gap-2 bg-[#0F010B] pb-8 pt-2">
-        <ButtonClaim
-          title="Invite friends"
-          onClick={() => {
-            console.log('this is temp')
-          }}
-        />
-
-        <button className=" flex h-[56px] w-[56px] items-center justify-center rounded-[12px] bg-[linear-gradient(140.91deg,#FFF1C4_9.31%,#FEAD1B_83.97%);]">
-          <GoLink size={24} />
-        </button>
+        <InviteButton />
       </div>
-      <InviteButton />
     </div>
   )
 }
