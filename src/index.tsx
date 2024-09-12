@@ -14,6 +14,7 @@ WebApp.ready()
 WebApp.setBackgroundColor('#000000')
 WebApp.setHeaderColor('#000000')
 WebApp.expand()
+WebApp.disableVerticalSwipes()
 
 root.render(
   <QueryClientProvider client={queryClient}>
