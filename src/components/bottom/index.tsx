@@ -55,7 +55,7 @@ const Bottom = () => {
   return (
     <div
       ref={containerRef}
-      className="relative flex w-full flex-row items-center justify-around pb-2"
+      className="relative flex w-full flex-row items-center justify-around pb-[36px]"
     >
       <div
         style={indicatorStyle}
