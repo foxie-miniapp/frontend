@@ -28,12 +28,14 @@ const App = () => {
     onSuccess: (data) => {
       setStorageData(StorageKey.ACCESS_TOKEN, data.token.accessToken)
       setUser(data.user)
+    },
+    onSettled: () => {
       setLoading(false)
     }
   })
 
   useEffect(() => {
-    if (!user) {
+    if (!user && WebApp.initDataUnsafe.user && WebApp.initData) {
       _login({
         username: WebApp.initDataUnsafe.user?.username || '',
         telegramId: WebApp.initDataUnsafe.user?.id.toString() || '',
@@ -53,7 +55,10 @@ const App = () => {
           code: WebApp.initDataUnsafe.start_param
         })
       })
+    } else {
+      setLoading(false)
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [WebApp])
 
   return (

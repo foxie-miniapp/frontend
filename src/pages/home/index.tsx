@@ -5,6 +5,8 @@ import useUser from '@/store/user.store'
 const HomePage = () => {
   const user = useUser((state) => state.user)
   const progress = 65
+
+  console.log('user', user)
   return (
     <div className="relative flex min-h-screen flex-col">
       <div className="grow overflow-hidden">
