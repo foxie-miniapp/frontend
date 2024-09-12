@@ -82,8 +82,8 @@ const WalletPage = () => {
           />
         </div>
 
-        <div className="flex flex-col items-center gap-2 text-center">
-          <h1 className=" text-[32px] font-semibold text-[#FFDB6F]">
+        <div className="z-10 flex flex-col items-center gap-2 text-center">
+          <h1 className=" token-text text-[32px] font-semibold">
             Foxie’s Ton Wallet
           </h1>
           <p className="text-[14px] font-normal text-[#FFF9E5] opacity-60">
