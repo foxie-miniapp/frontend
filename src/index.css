@@ -20,7 +20,11 @@
   font-weight: 700;
 }
 
-html {
+html,
+body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
   font-family: 'SF', sans-serif;
 }
 
