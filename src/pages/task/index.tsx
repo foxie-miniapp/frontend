@@ -7,7 +7,7 @@ const TaskPage = () => {
   const exp = useUser((state) => state.user?.exp)
 
   return (
-    <div className="relative flex w-full flex-col gap-6 overflow-x-hidden bg-[#0F010B] px-5 pb-7 pt-6">
+    <div className="relative flex min-h-screen w-full flex-col gap-6 overflow-x-hidden bg-[#0F010B] px-5 pb-7 pt-6">
       <div className="absolute left-1/2 top-[-20%] -translate-x-1/2">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -50,7 +50,7 @@ const TaskPage = () => {
       </div>
 
       <div className="flex flex-col items-center gap-2">
-        <div className="relative min-h-[160px]">
+        <div className="relative h-[160px] w-[220px]">
           <div className="absolute left-1/2 top-0 z-0 -translate-x-1/2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -95,7 +95,7 @@ const TaskPage = () => {
           </div>
           <img
             src="/images/tasks/task_bag.png"
-            className="relative z-10 h-full w-full object-cover"
+            className="absolute inset-0 z-10 h-full w-full object-cover"
             alt="logo"
           />
         </div>
