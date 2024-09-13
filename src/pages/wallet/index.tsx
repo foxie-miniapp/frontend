@@ -2,7 +2,7 @@ import { IoChevronForward } from 'react-icons/io5'
 
 const WalletPage = () => {
   return (
-    <div className="relative flex h-full w-full flex-col gap-6 px-5 py-6">
+    <div className="relative flex h-full w-full flex-col gap-6 overflow-x-hidden bg-[#0F010B] px-5 py-6">
       <div className="absolute left-1/2 top-[-20%] -translate-x-1/2">
         <svg
           xmlns="http://www.w3.org/2000/svg"
