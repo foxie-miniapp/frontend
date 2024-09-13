@@ -7,6 +7,7 @@ import { createRoot } from 'react-dom/client'
 import App from '@/App'
 
 import queryClient from './lib/client/query-client'
+import TonProvider from './provider/ton-provider'
 
 const container = document.getElementById('root') as HTMLDivElement
 const root = createRoot(container)
@@ -19,6 +20,8 @@ WebApp.viewportHeight
 
 root.render(
   <QueryClientProvider client={queryClient}>
-    <App />
+    <TonProvider>
+      <App />
+    </TonProvider>
   </QueryClientProvider>
 )

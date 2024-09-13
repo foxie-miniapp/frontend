@@ -13,9 +13,15 @@
     "types": "tsc --project tsconfig.json --noEmit"
   },
   "dependencies": {
+    "@esbuild-plugins/node-globals-polyfill": "^0.2.3",
     "@tanstack/react-query": "^5.55.4",
+    "@ton/core": "^0.58.1",
+    "@ton/crypto": "^3.3.0",
+    "@ton/ton": "^15.0.0",
+    "@tonconnect/ui-react": "^2.0.9",
     "@twa-dev/sdk": "^7.8.0",
     "axios": "^1.7.7",
+    "buffer": "^6.0.3",
     "immer": "^10.1.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

@@ -1,5 +1,6 @@
 import { useMutation } from '@tanstack/react-query'
 import WebApp from '@twa-dev/sdk'
+import { Buffer } from 'buffer'
 import { useEffect } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
@@ -14,6 +15,10 @@ import TaskPage from './pages/task'
 import WalletPage from './pages/wallet'
 import { login } from './services/user'
 import useUser from './store/user.store'
+
+if (typeof window !== 'undefined') {
+  window.Buffer = Buffer
+}
 
 const App = () => {
   const { user, setUser, isLoading, setLoading } = useUser((state) => ({
