@@ -1,3 +1,4 @@
+import WebApp from '@twa-dev/sdk'
 import { GoLink } from 'react-icons/go'
 
 import ButtonClaim from '@/components/commons/button_claim'
@@ -20,14 +21,32 @@ const InviteButton = () => {
     )
   }
 
+  const handleShareReferralLink = () => {
+    // Check if the web app is ready
+    if (WebApp) {
+      const inviteLink = `${appConfigs.telegramAppUrl}?startapp=${referralCode}`
+
+      // You can customize this invite text
+      const inviteText = `Join me on Foxie and let's earn together! Use my invite link to join the fun. 🌟`
+
+      // Construct the sharing URL
+      const shareUrl = `https://t.me/share/url?url=${encodeURIComponent(
+        inviteLink
+      )}&text=${encodeURIComponent(inviteText)}`
+
+      // Open the sharing dialog
+      WebApp.openTelegramLink(shareUrl)
+    } else {
+      console.error('Telegram WebApp is not initialized')
+    }
+  }
+
   return (
     <div className="flex w-full flex-row gap-2">
       <ButtonClaim
         title="Invite friends"
         className="claim-button"
-        onClick={() => {
-          console.log('this is temp')
-        }}
+        onClick={handleShareReferralLink}
       />
 
       <button
