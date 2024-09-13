@@ -1,4 +1,5 @@
 import SingleTask from '@/components/task/single_task'
+import TaskSkeletonLoader from '@/components/task/task-skeleton'
 import { useFetchQuests } from '@/hooks/use-fetch-quest'
 import useUser from '@/store/user.store'
 
@@ -110,8 +111,12 @@ const TaskPage = () => {
         </div>
       </div>
       <div className="flex flex-col gap-2">
-        {isLoading ? (
-          <div>Loading...</div>
+        {!isLoading ? (
+          <>
+            <TaskSkeletonLoader />
+            <TaskSkeletonLoader />
+            <TaskSkeletonLoader />
+          </>
         ) : (
           data?.map((task) => <SingleTask key={task._id} task={task} />)
         )}

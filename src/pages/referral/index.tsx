@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query'
 
 import FriendList from '@/components/referral/friend_invite'
 import InviteButton from '@/components/referral/invite-button'
+import TaskSkeletonLoader from '@/components/task/task-skeleton'
 import { QUERY_KEYS } from '@/lib/constants/query-key'
 import { getReferents } from '@/services/user'
 
@@ -117,7 +118,11 @@ const ReferralPage = () => {
         </div>
         <div className="flex flex-1 flex-col gap-2 overflow-y-auto">
           {isLoading ? (
-            <div>Loading...</div>
+            <>
+              <TaskSkeletonLoader />
+              <TaskSkeletonLoader />
+              <TaskSkeletonLoader />
+            </>
           ) : (
             data?.data?.map((friend) => (
               <FriendList
