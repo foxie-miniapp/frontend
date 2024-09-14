@@ -5,6 +5,10 @@ export type User = {
   _id: string
   telegramId: string
   username: string
+  firstName?: string
+  lastName?: string
+  walletAddress?: string
+  photoUrl?: string
   points: number
   referralCode: string
   exp: number
@@ -19,6 +23,7 @@ type UserStoreState = {
 type UserStoreAction = {
   reset: () => void
   setProfile: (profile: User) => void
+  updateWalletAddress: (walletAddress: string) => void
   setLoadUser: (isLoadUser: boolean) => void
   updatePoint: (point: number) => void
   addPoint: (point: number) => void
@@ -48,6 +53,13 @@ const useUser = create<
     setProfile: (profile) =>
       set((state) => {
         state.user = profile
+      }),
+
+    updateWalletAddress: (walletAddress) =>
+      set((state) => {
+        if (state.user) {
+          state.user.walletAddress = walletAddress
+        }
       }),
 
     updatePoint: (point) =>

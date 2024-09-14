@@ -1,15 +1,28 @@
+import { useMutation } from '@tanstack/react-query'
 import {
   useTonAddress,
   useTonConnectModal,
   useTonConnectUI
 } from '@tonconnect/ui-react'
-import React from 'react'
+import { useEffect } from 'react'
 import { IoChevronForward } from 'react-icons/io5'
 
 import { useTonBalance } from '@/hooks/use-balance'
 import { truncateAddress } from '@/lib/utils/string'
+import { updateWalletAddress } from '@/services/user'
+import useUser from '@/store/user.store'
 
 const ConnectWallet = () => {
+  const { userAddress, updateAddress } = useUser((state) => ({
+    userAddress: state.user?.walletAddress,
+    updateAddress: state.updateWalletAddress
+  }))
+  const { mutate: _update } = useMutation({
+    mutationFn: (address: string) => updateWalletAddress(address),
+    onSuccess: () => {
+      updateAddress(address)
+    }
+  })
   const { open } = useTonConnectModal()
   const address = useTonAddress()
   const [tonWallet] = useTonConnectUI()
@@ -19,6 +32,12 @@ const ConnectWallet = () => {
     open()
   }
 
+  useEffect(() => {
+    if (!userAddress && userAddress !== address && address) {
+      _update(address)
+    }
+  }, [_update, address, userAddress])
+
   if (address) {
     return (
       <>
@@ -26,11 +45,16 @@ const ConnectWallet = () => {
           <p className="flex-1 text-start text-[16px] font-semibold text-[#FFB625]">
             {truncateAddress(address)}
           </p>
-          <button className="text-white" onClick={() => tonWallet.disconnect()}>
+          <button
+            className="task-claim-btn h-[36px] rounded-full px-6 py-1 text-sm font-medium text-[#FFF1C4] transition-all duration-300 ease-in-out hover:bg-white/20"
+            onClick={() => tonWallet.disconnect()}
+          >
             Disconnect
           </button>
         </div>
-        <div className="text-white">Balance: {balance}</div>
+        <div className="text-center text-base text-[#FFB625]">
+          Balance: {balance.toFixed(2)} TON
+        </div>
       </>
     )
   }

@@ -20,7 +20,7 @@ export const useTonBalance = () => {
 
     try {
       const client = new TonClient({
-        endpoint: 'https://toncenter.com/api/v2/jsonRPC'
+        endpoint: 'https://testnet.toncenter.com/api/v2/jsonRPC'
       })
 
       const tonAddress = Address.parse(address)

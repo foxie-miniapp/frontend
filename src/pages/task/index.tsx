@@ -111,7 +111,7 @@ const TaskPage = () => {
         </div>
       </div>
       <div className="flex flex-col gap-2">
-        {!isLoading ? (
+        {isLoading ? (
           <>
             <TaskSkeletonLoader />
             <TaskSkeletonLoader />

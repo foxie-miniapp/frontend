@@ -14,3 +14,10 @@ export const getReferents = async () => {
   const res = await axiosClient.get('users/referents')
   return res.data as ReferentsResponse
 }
+
+export const updateWalletAddress = async (address: string) => {
+  const res = await axiosClient.put('/users/address', {
+    walletAddress: address
+  })
+  return res.data
+}
