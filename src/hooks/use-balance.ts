@@ -2,6 +2,8 @@ import { Address, TonClient } from '@ton/ton'
 import { useTonAddress } from '@tonconnect/ui-react'
 import { useCallback, useEffect, useState } from 'react'
 
+import { appConfigs } from '@/config/app-config'
+
 export const useTonBalance = () => {
   const [balance, setBalance] = useState(0)
   const [loading, setLoading] = useState(false)
@@ -20,7 +22,7 @@ export const useTonBalance = () => {
 
     try {
       const client = new TonClient({
-        endpoint: 'https://testnet.toncenter.com/api/v2/jsonRPC'
+        endpoint: appConfigs.tonApiUrl
       })
 
       const tonAddress = Address.parse(address)

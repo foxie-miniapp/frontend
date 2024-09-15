@@ -1,7 +1,11 @@
 import { useMutation } from '@tanstack/react-query'
 
+import { CompleteQuestPayload } from '@/lib/types/quest-action'
 import { completeQuest } from '@/services/quest'
 import useQuest, { QuestStatus, QuestType } from '@/store/quest.store'
+
+import LinkButton from './link-button'
+import SendButton from './send-button'
 
 type CompleteButtonProps = {
   questId: string
@@ -14,7 +18,7 @@ const CompleteButton = (props: CompleteButtonProps) => {
 
   const updateQuestStatus = useQuest((state) => state.updateQuestStatus)
   const { mutate: _completeQuest } = useMutation({
-    mutationFn: (questId: string) => completeQuest(questId),
+    mutationFn: (data: CompleteQuestPayload) => completeQuest(data),
     onSuccess: () => {
       updateQuestStatus(questId, QuestStatus.COMPLETED)
       // toast.success('Quest claimed   ');
@@ -24,34 +28,22 @@ const CompleteButton = (props: CompleteButtonProps) => {
     }
   })
 
-  const onCompleteQuest = () => {
-    if (questType === QuestType.LINK) {
-      window.open(url, '_blank')
-      _completeQuest(questId)
-    }
-  }
   return (
-    <button
-      className="text-[#FFF1C4] transition-all duration-300 ease-in-out hover:scale-110"
-      onClick={onCompleteQuest}
-    >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        className="transition-transform duration-300 ease-in-out hover:translate-x-1"
-      >
-        <path
-          d="M10 17L15 12L10 7"
-          stroke="#FFF1C4"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
+    <>
+      {questType === QuestType.LINK && url && (
+        <LinkButton
+          callCompleteQuest={() => {
+            _completeQuest({
+              questId
+            })
+          }}
+          questUrl={url}
         />
-      </svg>
-    </button>
+      )}
+      {questType === QuestType.ON_CHAIN && (
+        <SendButton callCompleteQuest={_completeQuest} questId={questId} />
+      )}
+    </>
   )
 }
 

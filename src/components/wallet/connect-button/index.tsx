@@ -26,7 +26,7 @@ const ConnectWallet = () => {
   const { open } = useTonConnectModal()
   const address = useTonAddress()
   const [tonWallet] = useTonConnectUI()
-  const { balance } = useTonBalance()
+  const { balance, loading: isLoadingBalance } = useTonBalance()
 
   const handleConnect = () => {
     open()
@@ -53,7 +53,7 @@ const ConnectWallet = () => {
           </button>
         </div>
         <div className="text-center text-base text-[#FFB625]">
-          Balance: {balance.toFixed(2)} TON
+          {isLoadingBalance ? '...' : ` Balance: ${balance.toFixed(2)} TON`}
         </div>
       </>
     )
