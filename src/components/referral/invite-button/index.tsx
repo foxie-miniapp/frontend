@@ -9,7 +9,7 @@ const InviteButton = () => {
   const referralCode = useUser((state) => state.user?.referralCode)
 
   const handleCopyReferralLink = () => {
-    const referralLink = `${appConfigs.telegramAppUrl}?startapp=${referralCode}`
+    const referralLink = `${appConfigs.telegramAppUrl}/${appConfigs.telegramAppName}?startapp=${referralCode}`
 
     navigator.clipboard.writeText(referralLink).then(
       () => {
@@ -24,7 +24,7 @@ const InviteButton = () => {
   const handleShareReferralLink = () => {
     // Check if the web app is ready
     if (WebApp) {
-      const inviteLink = `${appConfigs.telegramAppUrl}?startapp=${referralCode}`
+      const inviteLink = `${appConfigs.telegramAppUrl}/${appConfigs.telegramAppName}?startapp=${referralCode}`
 
       // You can customize this invite text
       const inviteText = `Join me on Foxie and let's earn together! Use my invite link to join the fun. 🌟`
