@@ -14,6 +14,7 @@ const InviteButton = () => {
     navigator.clipboard.writeText(referralLink).then(
       () => {
         // Show a popup to confirm the link was copied
+        WebApp.showAlert('Referral link copied to clipboard')
       },
       (err) => {
         console.error('Could not copy text: ', err)

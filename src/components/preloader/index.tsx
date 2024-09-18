@@ -29,7 +29,7 @@ const Preloader = () => {
           alt="Group_1"
           className="mix-blend-soft-light-override absolute inset-0"
         />
-        <div className="relative z-10 mx-auto h-[280px] w-[280px]">
+        <div className="relative z-10 mx-auto h-[200px] w-[200px]">
           <img
             src="/images/preloader/subtract.svg"
             alt="subtract"

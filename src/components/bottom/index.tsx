@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 
 import Home from '../icons/home'
+import Ranking from '../icons/rank'
 import Refferal from '../icons/refferal'
 import Task from '../icons/task'
 import Wallet from '../icons/wallet'
@@ -16,6 +17,7 @@ const Bottom = () => {
   const ListNavigation: NavigationRoute[] = [
     { route: '/', name: 'Home', icon: Home },
     { route: '/task', name: 'Task', icon: Task },
+    { route: '/ranking', name: 'Ranking', icon: Ranking },
     { route: '/referral', name: 'Referral', icon: Refferal },
     { route: '/wallet', name: 'Wallet', icon: Wallet }
   ]

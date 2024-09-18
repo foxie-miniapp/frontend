@@ -10,6 +10,7 @@ import { StorageKey } from './lib/constants/storage'
 import { setStorageData } from './lib/helpers/storage'
 import { UserLoginPayload } from './lib/types/user-action'
 import HomePage from './pages/home'
+import RankingPage from './pages/ranking'
 import ReferralPage from './pages/referral'
 import TaskPage from './pages/task'
 import WalletPage from './pages/wallet'
@@ -60,8 +61,6 @@ const App = () => {
           code: WebApp.initDataUnsafe.start_param
         })
       })
-    } else {
-      setLoading(false)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [WebApp])
@@ -76,6 +75,7 @@ const App = () => {
             <Route path="/" element={<MainLayout />}>
               <Route index element={<HomePage />} />
               <Route path="task" element={<TaskPage />} />
+              <Route path="ranking" element={<RankingPage />} />
               <Route path="referral" element={<ReferralPage />} />
               <Route path="wallet" element={<WalletPage />} />
             </Route>
