@@ -10,6 +10,11 @@ export const login = async (data: UserLoginPayload) => {
   return res.data as UserLoginResponse
 }
 
+export const me = async () => {
+  const res = await axiosClient.get('/users/me')
+  return res.data as UserLoginResponse
+}
+
 export const getReferents = async () => {
   const res = await axiosClient.get('users/referents')
   return res.data as ReferentsResponse

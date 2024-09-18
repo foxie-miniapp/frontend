@@ -7,11 +7,12 @@ const RankingItem = ({
 }) => {
   return (
     <div
-      className={`relative flex items-center gap-3 rounded-2xl px-3 py-4 ${isMe === true
+      className={`relative flex items-center gap-3 rounded-2xl px-3 py-4 ${
+        isMe === true
           ? 'bg-[linear-gradient(90deg,rgba(255,219,112,0.30)_0%,rgba(139,136,122,0.30)_100%)]'
           : 'bg-[rgba(241,236,212,0.08)]'
-        }
-      ${isMe === true && 'border border-[#FE9738]'}    
+      }
+      ${isMe === true && 'border border-[#FE9738]'}
       `}
     >
       <div className="relative h-10 w-10 overflow-hidden rounded-full border-2 border-[#AE9955]">

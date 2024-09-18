@@ -1,12 +1,34 @@
+import { useMutation } from '@tanstack/react-query'
+
 import ButtonClaim from '@/components/commons/button_claim'
+import { earnExp, expToLevel, levelToExp } from '@/lib/levels'
 import { localeNumber } from '@/lib/utils/number'
+import { feedPet } from '@/services/pet'
 import useUser from '@/store/user.store'
 
 const HomePage = () => {
   const user = useUser((state) => state.user)
-  const progress = 65
 
-  console.log('user', user)
+  const { addExp } = useUser((state) => ({
+    addExp: state.addExp
+  }))
+
+  const { mutate: _update } = useMutation({
+    mutationFn: () => feedPet(),
+
+    onSuccess: () => {
+      addExp(earnExp(user!.exp))
+    }
+  })
+  if (!user) return null
+
+  const currentLevel = expToLevel(user.exp)
+
+  const baseExp = currentLevel > 1 ? levelToExp(currentLevel - 1) + 1 : 0
+  const nextLevelExp = levelToExp(currentLevel) + 1
+
+  const progress = ((user.exp - baseExp) / (nextLevelExp - baseExp)) * 100
+
   return (
     <div className="relative flex min-h-screen flex-col bg-black">
       <div className="relative grow overflow-hidden">
@@ -30,13 +52,13 @@ const HomePage = () => {
                 {user?.username}
               </div>
               <h3 className="whitespace-nowrap text-[16px] font-medium text-[#FEE45A]">
-                Level 17
+                Level {currentLevel}
               </h3>
             </div>
 
             <div className="flex flex-col gap-1">
               <div className="flex flex-row items-center gap-1 font-medium text-white">
-                ⚡️800/1700
+                {user.exp - baseExp}/{nextLevelExp - baseExp}
               </div>
               <div className="h-2 w-full overflow-hidden rounded-lg bg-white/10 ">
                 <div
@@ -77,7 +99,10 @@ const HomePage = () => {
             </div>
           </div>
         </div>
-        <button className="absolute right-5 top-[150px] z-30 flex h-14 w-14 items-center justify-center rounded-full bg-[linear-gradient(90deg,#FEE45A_10.86%,#FEA613_101.85%)] transition-transform duration-300 ease-in-out active:rotate-12 active:scale-110">
+        <button
+          className="absolute right-5 top-[150px] z-30 flex h-14 w-14 items-center justify-center rounded-full bg-[linear-gradient(90deg,#FEE45A_10.86%,#FEA613_101.85%)] transition-transform duration-300 ease-in-out active:rotate-12 active:scale-110"
+          onClick={() => _update()}
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="45"
@@ -121,17 +146,16 @@ const HomePage = () => {
           </svg>
         </button>
       </div>
-      <div className="sticky bottom-0 z-10">
-        <div className="sticky bottom-0 z-10  w-full bg-black px-5 pb-8 pt-2">
-          <ButtonClaim
-            className="claim-button text-[18px] font-semibold"
-            title="Claim Rewards"
-            // eslint-disable-next-line @typescript-eslint/no-empty-function
-            onClick={() => {
-              console.log('this is temp')
-            }}
-          />
-        </div>
+
+      <div className="sticky bottom-0 z-10  flex w-full flex-col items-center gap-4 bg-black px-5 pb-8 pt-2">
+        <ButtonClaim
+          className="claim-button text-[18px] font-semibold"
+          title="Claim Rewards"
+          // eslint-disable-next-line @typescript-eslint/no-empty-function
+          onClick={() => {
+            console.log('this is temp')
+          }}
+        />
       </div>
     </div>
   )
