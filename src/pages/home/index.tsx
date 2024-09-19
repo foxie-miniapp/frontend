@@ -1,15 +1,28 @@
 import { useMutation } from '@tanstack/react-query'
+import { AnimatePresence, motion } from 'framer-motion'
+import { Sparkle, Star } from 'lucide-react'
 import { useEffect, useState } from 'react'
 
 import ButtonClaim from '@/components/commons/button_claim'
+import Counter from '@/components/home/counter'
 import { earnExp, expToLevel, levelToExp } from '@/lib/levels'
 import { dailyRewardPoints } from '@/lib/points'
-import { localeNumber } from '@/lib/utils/number'
 import { feedPet } from '@/services/pet'
 import { claimDailyReward, dailyReward } from '@/services/user'
 import useUser from '@/store/user.store'
 const HomePage = () => {
   const user = useUser((state) => state.user)
+  const [isFeeding, setIsFeeding] = useState(false)
+  interface Particle {
+    id: number
+    x: number
+    y: number
+    rotation: number
+    scale: number
+    type: string
+  }
+
+  const [particles, setParticles] = useState<Particle[]>([])
 
   const { addExp, addPoint, addNumberOfFoods } = useUser((state) => ({
     addExp: state.addExp,
@@ -18,7 +31,31 @@ const HomePage = () => {
   }))
 
   const { mutate: _feedPet } = useMutation({
-    mutationFn: () => feedPet(),
+    mutationFn: () => {
+      setIsFeeding(true)
+      const createParticles = (delay: number) => {
+        setTimeout(() => {
+          const newParticles = Array.from({ length: 8 }, (_, i) => ({
+            id: Date.now() + i + delay,
+            x: Math.random() * 160 - 80,
+            y: Math.random() * -100 - 50,
+            rotation: Math.random() * 360,
+            scale: Math.random() * 0.5 + 0.5,
+            type: Math.random() > 0.5 ? 'star' : 'sparkle'
+          }))
+          setParticles((prev) => [...prev, ...newParticles])
+        }, delay)
+      }
+
+      // Create three waves of particles
+      createParticles(0)
+      createParticles(200)
+      createParticles(400)
+
+      setTimeout(() => setIsFeeding(false), 1000)
+      setTimeout(() => setParticles([]), 2500)
+      return feedPet()
+    },
 
     onSuccess: () => {
       addExp(earnExp(user!.exp))
@@ -31,6 +68,7 @@ const HomePage = () => {
 
     onSuccess: () => {
       addPoint(dailyRewardPoints(user!.exp))
+      addNumberOfFoods(1)
       setClaimedDailyReward(true)
     }
   })
@@ -43,6 +81,17 @@ const HomePage = () => {
   }, [])
 
   if (!user) return null
+
+  const formatNumber = (num: number) => {
+    if (num >= 1000000) {
+      return (num / 1000000).toFixed(1) + 'M'
+    } else if (num >= 1000) {
+      return (num / 1000).toFixed(1) + 'K'
+    } else if (num == 0) {
+      return '0'
+    }
+    return num.toString()
+  }
 
   const currentLevel = expToLevel(user.exp)
 
@@ -79,8 +128,8 @@ const HomePage = () => {
             </div>
 
             <div className="flex flex-col gap-1">
-              <div className="flex flex-row items-center gap-1 font-medium text-white">
-                {user.exp - baseExp}/{nextLevelExp - baseExp}
+              <div className="flex flex-row items-center gap-1 text-sm font-medium  text-white">
+                ⚡️{user.exp - baseExp}/{nextLevelExp - baseExp}
               </div>
               <div className="h-2 w-full overflow-hidden rounded-lg bg-white/10 ">
                 <div
@@ -92,6 +141,36 @@ const HomePage = () => {
           </div>
 
           <div className="pet-circle floating-element relative z-10 mx-auto flex h-[280px] w-[280px] items-center justify-center rounded-full">
+            <AnimatePresence>
+              {particles.map((particle) => (
+                <motion.div
+                  key={particle.id}
+                  initial={{ opacity: 0, scale: 0, x: 0, y: 0, rotate: 0 }}
+                  animate={{
+                    opacity: [0, 1, 0],
+                    scale: [0, particle.scale, 0],
+                    x: particle.x,
+                    y: particle.y,
+                    rotate: particle.rotation
+                  }}
+                  transition={{
+                    duration: 1.5,
+                    times: [0, 0.2, 1],
+                    ease: 'easeOut'
+                  }}
+                  className="absolute left-1/2 top-1/3 z-30 -translate-x-1/2 -translate-y-1/2"
+                >
+                  {particle.type === 'star' ? (
+                    <Star size={24} className="fill-current text-yellow-300" />
+                  ) : (
+                    <Sparkle
+                      size={24}
+                      className="fill-current text-yellow-100"
+                    />
+                  )}
+                </motion.div>
+              ))}
+            </AnimatePresence>
             <video
               src="/images/home/fire.mp4"
               loop
@@ -102,13 +181,24 @@ const HomePage = () => {
               playsInline
             />
             <div className="pet-light absolute bottom-0 left-1/2 z-10 -translate-x-1/2"></div>
-            <div className="sprite-container relative z-10 overflow-hidden"></div>
+            <motion.div
+              animate={{
+                scale: isFeeding ? [1, 1.03, 1] : 1,
+                rotate: isFeeding ? [0, -1, 1, 0] : 0
+              }}
+              transition={{ duration: 0.5, ease: 'easeInOut' }}
+              className="sprite-container relative z-10 overflow-hidden"
+            ></motion.div>
           </div>
 
           <div className="relative z-20 flex w-full flex-col items-center gap-1">
-            <h1 className="token-text text-[40px] font-bold">
+            {/* <h1 className="token-text text-[40px] font-bold">
               {localeNumber(Number(user?.points))}
-            </h1>
+            </h1> */}
+            <Counter
+              value={user.points}
+              className="token-text text-[40px] font-bold"
+            />
             <div className="flex flex-row items-center gap-1 text-[12px] font-medium text-yellow-300">
               <img src="/icons/logo.svg" className="h-4 w-4" alt="logo" />
               $FOXIE
@@ -119,8 +209,8 @@ const HomePage = () => {
           className="absolute right-5 top-[150px] z-30 flex h-14 w-14 items-center justify-center rounded-full bg-[linear-gradient(90deg,#FEE45A_10.86%,#FEA613_101.85%)] transition-transform duration-300 ease-in-out active:rotate-12 active:scale-110"
           onClick={() => _feedPet()}
         >
-          <div className="absolute -left-0.5 -top-0.5 flex h-5 w-5 items-center justify-center rounded-full bg-[#FEE45A] text-[10px] font-extrabold text-[#000]">
-            {user?.numberOfFoods}
+          <div className="absolute -left-1 -top-1 flex h-6 w-auto min-w-[24px] items-center justify-center rounded-full bg-yellow-300 px-1 text-[10px] font-extrabold text-gray-800 transition-all duration-300 group-hover:bg-yellow-400">
+            {formatNumber(user?.numberOfFoods)}
           </div>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -168,7 +258,7 @@ const HomePage = () => {
 
       <div className="sticky bottom-0 z-10  flex w-full flex-col items-center gap-4 bg-black px-5 pb-8 pt-2">
         <ButtonClaim
-          className="claim-button text-[18px] font-semibold"
+          className="claim-button whitespace-nowrap text-[18px] font-semibold"
           title="Claim Rewards"
           disabled={claimedDailyReward}
           disabledTitle="You have claimed today's rewards"
