@@ -33,3 +33,17 @@ export type ReferentsResponse = {
   data: Referent[]
   pagination: Pagination
 }
+
+export type LeaderboardResponse = {
+  data: {
+    _id: string
+    username: string
+    points: number
+  }[]
+  pagination: Pagination
+  user: {
+    _id: string
+    username: string
+    points: number
+  }
+}
