@@ -62,7 +62,7 @@ const HomePage = () => {
               </div>
               <div className="h-2 w-full overflow-hidden rounded-lg bg-white/10 ">
                 <div
-                  className="h-2 rounded-lg bg-[linear-gradient(90deg,#E75400_0%,#FFBC3D_100%)] shadow-[0px_-1px_1px_0px_#FEB86C_inset]"
+                  className="h-2 rounded-lg bg-[linear-gradient(90deg,#E75400_0%,#FFBC3D_100%)] shadow-[0px_-1px_1px_0px_#FEB86C_inset] transition-all duration-500 ease-in-out"
                   style={{ width: `${progress}%` }}
                 />
               </div>
@@ -80,13 +80,7 @@ const HomePage = () => {
               playsInline
             />
             <div className="pet-light absolute bottom-0 left-1/2 z-10 -translate-x-1/2"></div>
-            <div className="relative z-10 h-[168px] w-[165px] overflow-hidden">
-              <img
-                src="/images/home/fox_center.svg"
-                alt="fox"
-                className="h-full w-full"
-              />
-            </div>
+            <div className="sprite-container relative z-10 overflow-hidden"></div>
           </div>
 
           <div className="relative z-20 flex w-full flex-col items-center gap-1">

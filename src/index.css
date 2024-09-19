@@ -253,3 +253,20 @@ body {
   -ms-mix-blend-mode: luminosity;
   -o-mix-blend-mode: luminosity;
 }
+
+.sprite-container {
+  width: 200px;
+  height: 200px;
+  background-image: url('/images/home/fox.png');
+  background-repeat: no-repeat;
+  animation: play 1.4s steps(14) infinite;
+}
+
+@keyframes play {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: -2800px 0;
+  }
+}
