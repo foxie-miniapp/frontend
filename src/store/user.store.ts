@@ -28,6 +28,7 @@ type UserStoreAction = {
   updatePoint: (point: number) => void
   addPoint: (point: number) => void
   addExp: (point: number) => void
+  addNumberOfFoods: (point: number) => void
 }
 
 const initialState: UserStoreState = {
@@ -81,6 +82,13 @@ const useUser = create<
       set((state) => {
         if (state.user) {
           state.user.exp = state.user.exp + exp
+        }
+      }),
+
+    addNumberOfFoods: (number) =>
+      set((state) => {
+        if (state.user) {
+          state.user.numberOfFoods = state.user.numberOfFoods + number
         }
       })
   }))
