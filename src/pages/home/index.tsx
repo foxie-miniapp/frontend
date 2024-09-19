@@ -1,25 +1,47 @@
 import { useMutation } from '@tanstack/react-query'
+import { useEffect, useState } from 'react'
 
 import ButtonClaim from '@/components/commons/button_claim'
 import { earnExp, expToLevel, levelToExp } from '@/lib/levels'
+import { dailyRewardPoints } from '@/lib/points'
 import { localeNumber } from '@/lib/utils/number'
 import { feedPet } from '@/services/pet'
+import { claimDailyReward, dailyReward } from '@/services/user'
 import useUser from '@/store/user.store'
-
 const HomePage = () => {
   const user = useUser((state) => state.user)
 
-  const { addExp } = useUser((state) => ({
-    addExp: state.addExp
+  const { addExp, addPoint, addNumberOfFoods } = useUser((state) => ({
+    addExp: state.addExp,
+    addPoint: state.addPoint,
+    addNumberOfFoods: state.addNumberOfFoods
   }))
 
-  const { mutate: _update } = useMutation({
+  const { mutate: _feedPet } = useMutation({
     mutationFn: () => feedPet(),
 
     onSuccess: () => {
       addExp(earnExp(user!.exp))
+      addNumberOfFoods(-1)
     }
   })
+
+  const { mutate: _claimDailyReward } = useMutation({
+    mutationFn: () => claimDailyReward(),
+
+    onSuccess: () => {
+      addPoint(dailyRewardPoints(user!.exp))
+      setClaimedDailyReward(true)
+    }
+  })
+
+  const [claimedDailyReward, setClaimedDailyReward] = useState(false)
+  useEffect(() => {
+    dailyReward().then((res) => {
+      setClaimedDailyReward(res.claimed)
+    })
+  }, [])
+
   if (!user) return null
 
   const currentLevel = expToLevel(user.exp)
@@ -101,8 +123,11 @@ const HomePage = () => {
         </div>
         <button
           className="absolute right-5 top-[150px] z-30 flex h-14 w-14 items-center justify-center rounded-full bg-[linear-gradient(90deg,#FEE45A_10.86%,#FEA613_101.85%)] transition-transform duration-300 ease-in-out active:rotate-12 active:scale-110"
-          onClick={() => _update()}
+          onClick={() => _feedPet()}
         >
+          <div className="absolute -left-0.5 -top-0.5 flex h-5 w-5 items-center justify-center rounded-full bg-[#FEE45A] text-[10px] font-extrabold text-[#000]">
+            {user?.numberOfFoods}
+          </div>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="45"
@@ -151,10 +176,10 @@ const HomePage = () => {
         <ButtonClaim
           className="claim-button text-[18px] font-semibold"
           title="Claim Rewards"
+          disabled={claimedDailyReward}
+          disabledTitle="You have claimed today's rewards"
           // eslint-disable-next-line @typescript-eslint/no-empty-function
-          onClick={() => {
-            console.log('this is temp')
-          }}
+          onClick={() => _claimDailyReward()}
         />
       </div>
     </div>

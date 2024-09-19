@@ -26,3 +26,13 @@ export const updateWalletAddress = async (address: string) => {
   })
   return res.data
 }
+
+export const dailyReward = async () => {
+  const res = await axiosClient.get('/users/daily-reward')
+  return res.data as { claimed: boolean }
+}
+
+export const claimDailyReward = async () => {
+  const res = await axiosClient.post('/users/daily-reward')
+  return res.data
+}
