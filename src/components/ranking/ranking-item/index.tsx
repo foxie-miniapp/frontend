@@ -1,10 +1,18 @@
-const RankingItem = ({
-  isMe,
-  isTop1
-}: {
+export type RankingItemProps = {
+  username: string
+  points: number
+  rank: number
   isMe?: boolean
   isTop1?: boolean
-}) => {
+}
+
+const RankingItem = ({
+  isMe,
+  isTop1,
+  rank,
+  username,
+  points
+}: RankingItemProps) => {
   return (
     <div
       className={`relative flex items-center gap-3 rounded-2xl px-3 py-4 ${
@@ -24,7 +32,7 @@ const RankingItem = ({
       </div>
       <div className="flex flex-1 flex-col gap-1">
         <div className="flex items-center gap-2">
-          <h2 className="truncate text-sm text-[#FFF1C4]">Dev Nguyen</h2>
+          <h2 className="truncate text-sm text-[#FFF1C4]">{username}</h2>
           {isMe === true && (
             <div className="rounded bg-[rgba(249,145,33,0.20)] px-2 text-xs font-medium text-[#FF9524]">
               You
@@ -33,7 +41,7 @@ const RankingItem = ({
         </div>
         <div className="flex items-center gap-1">
           <img src="/icons/logo.svg" className="h-4 w-4" alt="logo" />
-          <p className="text-sm font-medium text-[#FFB625]">1000</p>
+          <p className="text-sm font-medium text-[#FFB625]">{points}</p>
         </div>
       </div>
       {isTop1 === true ? (
@@ -43,7 +51,7 @@ const RankingItem = ({
           className="absolute right-3 top-0"
         />
       ) : (
-        <h1 className="text-sm font-medium text-[#FFB625]">#4</h1>
+        <h1 className="text-sm font-medium text-[#FFB625]">#{rank}</h1>
       )}
     </div>
   )

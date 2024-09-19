@@ -1,5 +1,6 @@
 import axiosClient from '@/lib/client/axios-client'
 import {
+  LeaderboardResponse,
   ReferentsResponse,
   UserLoginPayload,
   UserLoginResponse
@@ -25,6 +26,13 @@ export const updateWalletAddress = async (address: string) => {
     walletAddress: address
   })
   return res.data
+}
+
+export const getLeaderboard = async (page?: number, limit?: number) => {
+  const res = await axiosClient.get(
+    `/users/leaderboard?page=${page || 1}&limit=${limit || 10}`
+  )
+  return res.data as LeaderboardResponse
 }
 
 export const dailyReward = async () => {
