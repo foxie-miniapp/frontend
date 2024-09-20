@@ -39,11 +39,18 @@ export type LeaderboardResponse = {
     _id: string
     username: string
     points: number
+    photoUrl?: string
+    firstName?: string
+    lastName?: string
   }[]
-  pagination: Pagination
+  total: number
   user: {
     _id: string
     username: string
     points: number
+    rank: number
+    photoUrl?: string
+    firstName?: string
+    lastName?: string
   }
 }

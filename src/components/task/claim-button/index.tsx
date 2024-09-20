@@ -1,4 +1,5 @@
 import { useMutation } from '@tanstack/react-query'
+import toast from 'react-hot-toast'
 
 import { claimQuest } from '@/services/quest'
 import useQuest, { QuestStatus } from '@/store/quest.store'
@@ -18,10 +19,10 @@ const ClaimButton = (props: ClaimButtonProps) => {
     onSuccess: () => {
       updateQuestStatus(questId, QuestStatus.CLAIMED)
       addPoint(point)
-      // toast.success('Quest claimed   ');
+      toast.success('Quest claimed')
     },
     onError: () => {
-      // toast.error('Failed to claim');
+      toast.error('Failed to claim')
     }
   })
 

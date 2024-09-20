@@ -19,7 +19,6 @@ export const useFetchQuests = () => {
   }, [data, setQuests])
 
   return {
-    data,
     isLoading,
     refetch
   }

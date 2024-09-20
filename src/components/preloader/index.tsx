@@ -2,17 +2,22 @@ import { useCallback, useEffect, useState } from 'react'
 
 import CircleLink from '../circle-link'
 
-const Preloader = () => {
+const Preloader = ({
+  handleCompleteLoading
+}: {
+  handleCompleteLoading: () => void
+}) => {
   const [progress, setProgress] = useState(0)
 
   const incrementProgress = useCallback(() => {
     setProgress((prevProgress) => {
       if (prevProgress >= 99) {
+        handleCompleteLoading()
         return 99
       }
       return Math.min(prevProgress + 1, 99)
     })
-  }, [])
+  }, [handleCompleteLoading])
 
   useEffect(() => {
     const timer = setInterval(incrementProgress, 20)

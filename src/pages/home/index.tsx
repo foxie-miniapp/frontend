@@ -1,9 +1,11 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { useMutation } from '@tanstack/react-query'
 import { AnimatePresence, motion } from 'framer-motion'
 import { Sparkle, Star } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import toast from 'react-hot-toast'
 
+import Avatar from '@/components/avatar'
 import ButtonClaim from '@/components/commons/button_claim'
 import Counter from '@/components/home/counter'
 import { earnExp, expToLevel, levelToExp } from '@/lib/levels'
@@ -119,13 +121,16 @@ const HomePage = () => {
         <div className="relative z-10 flex w-full flex-col gap-8 py-6">
           <div className="flex flex-col gap-4 px-5">
             <div className="flex flex-row items-center justify-between gap-2 rounded-xl border border-[rgba(255,255,255,0.12)] bg-[rgba(255,255,255,0.08)] p-[12px_16px_12px_12px] bg-blend-color-dodge backdrop-blur-[10px]">
-              <div className="h-8 w-8 overflow-hidden rounded-full border bg-[#F9EED8]">
-                <img
-                  src="/images/fox_avatar.png"
-                  className="h-full w-full object-cover"
-                  alt="foxie"
-                />
-              </div>
+              <Avatar
+                src={user?.photoUrl || ''}
+                fallback={
+                  user.firstName && user.lastName
+                    ? `${user.firstName[0]}${user.lastName[0]}`
+                    : user.username[0]
+                }
+                alt={user?.username}
+                size="sm"
+              />
               <div className="flex-1 truncate text-base font-medium text-[#FFF1C4]">
                 {user?.username}
               </div>

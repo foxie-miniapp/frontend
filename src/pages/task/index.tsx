@@ -1,10 +1,12 @@
 import SingleTask from '@/components/task/single_task'
 import TaskSkeletonLoader from '@/components/task/task-skeleton'
 import { useFetchQuests } from '@/hooks/use-fetch-quest'
+import useQuest from '@/store/quest.store'
 import useUser from '@/store/user.store'
 
 const TaskPage = () => {
-  const { isLoading, data } = useFetchQuests()
+  const { isLoading } = useFetchQuests()
+  const data = useQuest((state) => state.quests)
   const exp = useUser((state) => state.user?.exp)
 
   return (

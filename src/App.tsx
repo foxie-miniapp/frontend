@@ -1,7 +1,7 @@
 import { useMutation } from '@tanstack/react-query'
 import WebApp from '@twa-dev/sdk'
 import { Buffer } from 'buffer'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 import DismissableToast from './components/commons/toast'
@@ -23,9 +23,9 @@ if (typeof window !== 'undefined') {
 }
 
 const App = () => {
-  const { user, setUser, isLoading, setLoading } = useUser((state) => ({
+  const [isLoading, setLoading] = useState(true)
+  const { user, setUser } = useUser((state) => ({
     user: state.user,
-    isLoading: state.isLoadUser,
     setUser: state.setProfile,
     setLoading: state.setLoadUser
   }))
@@ -35,9 +35,6 @@ const App = () => {
     onSuccess: (data) => {
       setStorageData(StorageKey.ACCESS_TOKEN, data.token.accessToken)
       setUser(data.user)
-    },
-    onSettled: () => {
-      setLoading(false)
     }
   })
 
@@ -68,8 +65,8 @@ const App = () => {
 
   return (
     <>
-      {isLoading ? (
-        <Preloader />
+      {isLoading || !user ? (
+        <Preloader handleCompleteLoading={() => setLoading(false)} />
       ) : (
         <BrowserRouter>
           <Routes>

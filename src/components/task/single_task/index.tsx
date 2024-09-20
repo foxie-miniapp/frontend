@@ -36,7 +36,11 @@ const SingleTask = ({ task }: SingleTaskProps) => {
       </div>
 
       {task.status === QuestStatus.IN_PROGRESS && (
-        <CompleteButton questId={task._id} questType={task.type} />
+        <CompleteButton
+          questId={task._id}
+          url={task.url}
+          questType={task.type}
+        />
       )}
 
       {task.status === QuestStatus.COMPLETED && (

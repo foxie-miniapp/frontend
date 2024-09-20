@@ -28,10 +28,8 @@ export const updateWalletAddress = async (address: string) => {
   return res.data
 }
 
-export const getLeaderboard = async (page?: number, limit?: number) => {
-  const res = await axiosClient.get(
-    `/users/leaderboard?page=${page || 1}&limit=${limit || 10}`
-  )
+export const getLeaderboard = async () => {
+  const res = await axiosClient.get(`/users/leaderboard`)
   return res.data as LeaderboardResponse
 }
 

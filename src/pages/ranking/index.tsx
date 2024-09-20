@@ -1,5 +1,4 @@
-import { useInfiniteQuery } from '@tanstack/react-query'
-import { useEffect, useRef } from 'react'
+import { useQuery } from '@tanstack/react-query'
 
 import RankingItem from '@/components/ranking/ranking-item'
 import TaskSkeletonLoader from '@/components/task/task-skeleton'
@@ -7,44 +6,10 @@ import { QUERY_KEYS } from '@/lib/constants/query-key'
 import { getLeaderboard } from '@/services/user'
 
 const RankingPage = () => {
-  const LIMIT = 10
-  const observerTarget = useRef(null)
-
-  const { data, isLoading, fetchNextPage, hasNextPage, isFetchingNextPage } =
-    useInfiniteQuery({
-      queryKey: [QUERY_KEYS.USER.LEADERBOARD],
-      queryFn: ({ pageParam = 1 }: { pageParam?: number }) =>
-        getLeaderboard(pageParam, LIMIT),
-      getNextPageParam: (lastPage: {
-        pagination: { currentPage: number; totalPages: number }
-      }) => {
-        const { currentPage, totalPages } = lastPage.pagination
-        return currentPage < totalPages ? currentPage + 1 : undefined
-      },
-      initialPageParam: 1
-    })
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting && hasNextPage && !isFetchingNextPage) {
-          fetchNextPage()
-        }
-      },
-      { threshold: 1.0 }
-    )
-
-    const currentTarget = observerTarget.current
-    if (currentTarget) {
-      observer.observe(currentTarget)
-    }
-
-    return () => {
-      if (currentTarget) {
-        observer.unobserve(currentTarget)
-      }
-    }
-  }, [fetchNextPage, hasNextPage, isFetchingNextPage])
+  const { data, isLoading } = useQuery({
+    queryKey: [QUERY_KEYS.USER.LEADERBOARD],
+    queryFn: getLeaderboard
+  })
 
   return (
     <div className="relative flex h-full w-full flex-col justify-between gap-6 overflow-x-hidden bg-[#0F010B] px-5 pt-6">
@@ -97,21 +62,38 @@ const RankingPage = () => {
               <TaskSkeletonLoader />
             </>
           ) : (
-            data?.pages.flatMap((page, pageIndex) =>
-              page.data.map((item, index) => (
+            <>
+              {data?.user && (
+                <RankingItem
+                  isMe
+                  rank={data.user.rank}
+                  photoUrl={data.user.photoUrl}
+                  firstName={data.user.firstName}
+                  lastName={data.user.lastName}
+                  username={data.user.username}
+                  points={data.user.points}
+                />
+              )}
+
+              <div className="mt-3 flex items-center justify-between text-white">
+                <p>{data?.total} holders</p>
+                <p className="font-semibold text-[#FFB625]">TOP 100</p>
+              </div>
+
+              {data?.data?.map((item, index) => (
                 <RankingItem
                   key={item._id}
-                  rank={pageIndex * LIMIT + index + 1}
+                  isTop1={index === 0}
+                  rank={index + 1}
+                  photoUrl={item.photoUrl}
+                  firstName={item.firstName}
+                  lastName={item.lastName}
                   username={item.username}
                   points={item.points}
-                  isMe={item._id === page.user._id}
-                  isTop1={pageIndex === 0 && index === 0}
                 />
-              ))
-            )
+              ))}
+            </>
           )}
-          {isFetchingNextPage && <TaskSkeletonLoader />}
-          <div ref={observerTarget} style={{ height: '1px' }} />
         </div>
       </div>
     </div>

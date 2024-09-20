@@ -1,7 +1,12 @@
+import Avatar from '@/components/avatar'
+
 export type RankingItemProps = {
   username: string
   points: number
   rank: number
+  firstName?: string
+  lastName?: string
+  photoUrl?: string
   isMe?: boolean
   isTop1?: boolean
 }
@@ -10,6 +15,9 @@ const RankingItem = ({
   isMe,
   isTop1,
   rank,
+  photoUrl,
+  firstName,
+  lastName,
   username,
   points
 }: RankingItemProps) => {
@@ -24,10 +32,15 @@ const RankingItem = ({
       `}
     >
       <div className="relative h-10 w-10 overflow-hidden rounded-full border-2 border-[#AE9955]">
-        <img
-          src="/images/fox_avatar.png"
-          alt="foxie"
-          className="absolute inset-0 h-full w-full object-cover"
+        <Avatar
+          src={photoUrl || ''}
+          alt={username}
+          size="md"
+          fallback={
+            firstName && lastName
+              ? `${firstName[0]}${lastName[0]}`
+              : username[0]
+          }
         />
       </div>
       <div className="flex flex-1 flex-col gap-1">

@@ -1,4 +1,5 @@
 import { useMutation } from '@tanstack/react-query'
+import toast from 'react-hot-toast'
 
 import { CompleteQuestPayload } from '@/lib/types/quest-action'
 import { completeQuest } from '@/services/quest'
@@ -21,10 +22,10 @@ const CompleteButton = (props: CompleteButtonProps) => {
     mutationFn: (data: CompleteQuestPayload) => completeQuest(data),
     onSuccess: () => {
       updateQuestStatus(questId, QuestStatus.COMPLETED)
-      // toast.success('Quest claimed   ');
+      toast.success('Quest completed')
     },
     onError: () => {
-      // toast.error('Failed to claim');
+      toast.error('Failed to complete')
     }
   })
 

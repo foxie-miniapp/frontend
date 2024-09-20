@@ -68,9 +68,15 @@ const useQuest = create<
 
     updateQuestStatus: (questId, status) =>
       set((state) => {
-        state.quests = state.quests.map((quest) =>
-          quest._id === questId ? { ...quest, status } : quest
-        )
+        state.quests = state.quests.map((quest) => {
+          if (quest._id === questId) {
+            return {
+              ...quest,
+              status
+            }
+          }
+          return quest
+        })
       })
   }))
 )
