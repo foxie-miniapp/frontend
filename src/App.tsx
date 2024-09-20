@@ -4,6 +4,7 @@ import { Buffer } from 'buffer'
 import { useEffect } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
+import DismissableToast from './components/commons/toast'
 import MainLayout from './components/layout'
 import Preloader from './components/preloader'
 import { StorageKey } from './lib/constants/storage'
@@ -82,6 +83,7 @@ const App = () => {
           </Routes>
         </BrowserRouter>
       )}
+      <DismissableToast />
     </>
   )
 }

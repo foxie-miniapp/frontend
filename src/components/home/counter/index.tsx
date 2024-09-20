@@ -24,21 +24,34 @@ export default function Counter({
 
   useEffect(() => {
     if (isInView) {
-      motionValue.set(direction === 'down' ? 0 : value)
+      // Only animate if value is not zero
+      if (value !== 0) {
+        motionValue.set(direction === 'down' ? 0 : value)
+      } else {
+        // If value is zero, set it directly without animation
+        if (ref.current) {
+          ref.current.textContent = '0'
+        }
+      }
     }
   }, [motionValue, isInView, value, direction])
 
-  useEffect(
-    () =>
-      springValue.on('change', (latest) => {
-        if (ref.current) {
-          ref.current.textContent = Intl.NumberFormat(locale).format(
-            Number(latest.toFixed(0))
-          )
-        }
-      }),
-    [springValue, locale]
-  )
+  useEffect(() => {
+    const unsubscribe = springValue.on('change', (latest) => {
+      if (ref.current) {
+        ref.current.textContent = Intl.NumberFormat(locale).format(
+          Number(latest.toFixed(0))
+        )
+      }
+    })
+
+    // Set initial value to ensure something is always displayed
+    if (ref.current) {
+      ref.current.textContent = Intl.NumberFormat(locale).format(0)
+    }
+
+    return unsubscribe
+  }, [springValue, locale])
 
   return <span className={className} ref={ref} />
 }

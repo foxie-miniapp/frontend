@@ -2,11 +2,13 @@ import { useMutation } from '@tanstack/react-query'
 import { AnimatePresence, motion } from 'framer-motion'
 import { Sparkle, Star } from 'lucide-react'
 import { useEffect, useState } from 'react'
+import toast from 'react-hot-toast'
 
 import ButtonClaim from '@/components/commons/button_claim'
 import Counter from '@/components/home/counter'
 import { earnExp, expToLevel, levelToExp } from '@/lib/levels'
 import { dailyRewardPoints } from '@/lib/points'
+import { localeNumber } from '@/lib/utils/number'
 import { feedPet } from '@/services/pet'
 import { claimDailyReward, dailyReward } from '@/services/user'
 import useUser from '@/store/user.store'
@@ -70,6 +72,11 @@ const HomePage = () => {
       addPoint(dailyRewardPoints(user!.exp))
       addNumberOfFoods(1)
       setClaimedDailyReward(true)
+      toast.success(
+        `You've claimed ${localeNumber(
+          dailyRewardPoints(user!.exp)
+        )} $FOXIE🦊 and 1 🍖`
+      )
     }
   })
 

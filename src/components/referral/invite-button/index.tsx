@@ -1,4 +1,5 @@
 import WebApp from '@twa-dev/sdk'
+import toast from 'react-hot-toast'
 import { GoLink } from 'react-icons/go'
 
 import ButtonClaim from '@/components/commons/button_claim'
@@ -14,7 +15,8 @@ const InviteButton = () => {
     navigator.clipboard.writeText(referralLink).then(
       () => {
         // Show a popup to confirm the link was copied
-        WebApp.showAlert('Referral link copied to clipboard')
+        toast.dismiss()
+        toast.success('Referral link copied to clipboard')
       },
       (err) => {
         console.error('Could not copy text: ', err)
