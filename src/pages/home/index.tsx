@@ -36,7 +36,8 @@ const HomePage = () => {
 
   const { mutate: _feedPet } = useMutation({
     mutationFn: async () => {
-      if (user?.numberOfFoods === 0) {
+      if (user!.numberOfFoods < 1) {
+        toast.dismiss()
         toast.error('You have no food left')
         return Promise.reject('No food left')
       }
