@@ -76,8 +76,7 @@ const RankingPage = () => {
               )}
 
               <div className="mt-3 flex items-center justify-between text-white">
-                <p>{data?.total} holders</p>
-                <p className="font-semibold text-[#FFB625]">TOP 100</p>
+                <p className="text-sm font-semibold text-[#FFB625]">TOP 100</p>
               </div>
 
               {data?.data?.map((item, index) => (

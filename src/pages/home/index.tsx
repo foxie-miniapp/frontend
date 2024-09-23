@@ -35,7 +35,11 @@ const HomePage = () => {
   }))
 
   const { mutate: _feedPet } = useMutation({
-    mutationFn: () => {
+    mutationFn: async () => {
+      if (user?.numberOfFoods === 0) {
+        toast.error('You have no food left')
+        return Promise.reject('No food left')
+      }
       setIsFeeding(true)
       const createParticles = (delay: number) => {
         setTimeout(() => {
@@ -151,55 +155,51 @@ const HomePage = () => {
               </div>
             </div>
           </div>
-          <div className="-mb-8 -mt-5 scale-90">
-            <div className="pet-circle floating-element relative z-10 mx-auto flex h-[280px] w-[280px] items-center justify-center rounded-full">
-              <AnimatePresence>
-                {particles.map((particle) => (
-                  <motion.div
-                    key={particle.id}
-                    initial={{ opacity: 0, scale: 0, x: 0, y: 0, rotate: 0 }}
-                    animate={{
-                      opacity: [0, 1, 0],
-                      scale: [0, particle.scale, 0],
-                      x: particle.x,
-                      y: particle.y,
-                      rotate: particle.rotation
-                    }}
-                    transition={{
-                      duration: 1.5,
-                      times: [0, 0.2, 1],
-                      ease: 'easeOut'
-                    }}
-                    className="absolute left-1/2 top-1/3 z-30 -translate-x-1/2 -translate-y-1/2"
-                  >
-                    {particle.type === 'star' ? (
-                      <Star
-                        size={24}
-                        className="fill-current text-yellow-300"
-                      />
-                    ) : (
-                      <Sparkle
-                        size={24}
-                        className="fill-current text-yellow-100"
-                      />
-                    )}
-                  </motion.div>
-                ))}
-              </AnimatePresence>
-              <img
-                src="/images/home/fire.gif"
-                className="mix-blend-lighten-override absolute inset-0 z-0 h-full w-full translate-y-1/2 object-cover"
-              />
-              <div className="pet-light absolute bottom-0 left-1/2 z-10 -translate-x-1/2"></div>
-              <motion.div
-                animate={{
-                  scale: isFeeding ? [1, 1.03, 1] : 1,
-                  rotate: isFeeding ? [0, -1, 1, 0] : 0
-                }}
-                transition={{ duration: 0.5, ease: 'easeInOut' }}
-                className="sprite-container relative z-10 overflow-hidden"
-              ></motion.div>
-            </div>
+
+          <div className="pet-circle floating-element relative z-10 mx-auto flex h-[280px] w-[280px] items-center justify-center rounded-full">
+            <AnimatePresence>
+              {particles.map((particle) => (
+                <motion.div
+                  key={particle.id}
+                  initial={{ opacity: 0, scale: 0, x: 0, y: 0, rotate: 0 }}
+                  animate={{
+                    opacity: [0, 1, 0],
+                    scale: [0, particle.scale, 0],
+                    x: particle.x,
+                    y: particle.y,
+                    rotate: particle.rotation
+                  }}
+                  transition={{
+                    duration: 1.5,
+                    times: [0, 0.2, 1],
+                    ease: 'easeOut'
+                  }}
+                  className="absolute left-1/2 top-1/3 z-30 -translate-x-1/2 -translate-y-1/2"
+                >
+                  {particle.type === 'star' ? (
+                    <Star size={24} className="fill-current text-yellow-300" />
+                  ) : (
+                    <Sparkle
+                      size={24}
+                      className="fill-current text-yellow-100"
+                    />
+                  )}
+                </motion.div>
+              ))}
+            </AnimatePresence>
+            <img
+              src="/images/home/fire.gif"
+              className="mix-blend-lighten-override absolute inset-0 z-0 h-full w-full translate-y-1/2 object-cover"
+            />
+            <div className="pet-light absolute bottom-0 left-1/2 z-10 -translate-x-1/2"></div>
+            <motion.div
+              animate={{
+                scale: isFeeding ? [1, 1.03, 1] : 1,
+                rotate: isFeeding ? [0, -1, 1, 0] : 0
+              }}
+              transition={{ duration: 0.5, ease: 'easeInOut' }}
+              className="sprite-container relative z-10 overflow-hidden"
+            ></motion.div>
           </div>
 
           <div className="relative z-20 flex w-full flex-col items-center gap-1">
