@@ -151,7 +151,7 @@ const HomePage = () => {
               </div>
             </div>
           </div>
-          <div className="-mb-16 -mt-10 scale-75">
+          <div className="-mb-8 -mt-5 scale-90">
             <div className="pet-circle floating-element relative z-10 mx-auto flex h-[280px] w-[280px] items-center justify-center rounded-full">
               <AnimatePresence>
                 {particles.map((particle) => (
@@ -266,17 +266,18 @@ const HomePage = () => {
           </svg>
         </button>
       </div>
-
-      <div className="sticky bottom-0 z-10  flex w-full flex-col items-center gap-4 px-5 py-2">
-        <ButtonClaim
-          className="claim-button whitespace-nowrap text-[14px] font-semibold leading-4"
-          title="Claim Rewards"
-          disabled={claimedDailyReward}
-          disabledTitle="You have claimed today's rewards"
-          // eslint-disable-next-line @typescript-eslint/no-empty-function
-          onClick={() => _claimDailyReward()}
-        />
-      </div>
+      {claimedDailyReward == false && (
+        <div className="sticky bottom-0 z-30 flex w-full flex-col items-center gap-4 px-5 py-2">
+          <ButtonClaim
+            className="whitespace-nowrap text-[14px] font-semibold leading-4"
+            title="Claim Rewards"
+            disabled={claimedDailyReward}
+            disabledTitle="You have claimed today's rewards"
+            // eslint-disable-next-line @typescript-eslint/no-empty-function
+            onClick={() => _claimDailyReward()}
+          />
+        </div>
+      )}
     </div>
   )
 }
