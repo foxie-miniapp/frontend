@@ -31,7 +31,6 @@ const RankingItem = ({
       ${isMe === true && 'border border-[#FE9738]'}
       `}
     >
-      <div className="relative h-10 w-10 overflow-hidden rounded-full border-2 border-[#AE9955]">
         <Avatar
           src={photoUrl || ''}
           alt={username}
@@ -42,7 +41,6 @@ const RankingItem = ({
               : username[0]
           }
         />
-      </div>
       <div className="flex flex-1 flex-col gap-1">
         <div className="flex items-center gap-2">
           <h2 className="truncate text-sm text-[#FFF1C4]">{username}</h2>

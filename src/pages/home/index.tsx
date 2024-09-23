@@ -183,14 +183,9 @@ const HomePage = () => {
                 </motion.div>
               ))}
             </AnimatePresence>
-            <video
-              src="/images/home/fire.mp4"
-              loop
-              muted
-              autoPlay
-              preload="true"
+            <img
+              src="/images/home/fire.gif"
               className="mix-blend-lighten-override absolute inset-0 z-0 h-full w-full translate-y-1/2 object-cover"
-              playsInline
             />
             <div className="pet-light absolute bottom-0 left-1/2 z-10 -translate-x-1/2"></div>
             <motion.div

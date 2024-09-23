@@ -11,11 +11,11 @@ const Preloader = ({
 
   const incrementProgress = useCallback(() => {
     setProgress((prevProgress) => {
-      if (prevProgress >= 99) {
+      if (prevProgress >= 100) {
         handleCompleteLoading()
-        return 99
+        return 100
       }
-      return Math.min(prevProgress + 1, 99)
+      return Math.min(prevProgress + 1, 100)
     })
   }, [handleCompleteLoading])
 
@@ -40,13 +40,10 @@ const Preloader = ({
             alt="subtract"
             className="absolute inset-0 z-[1]"
           />
-          <div className="mix-blend-plus-lighter-override absolute bottom-[-15%] left-1/2 z-0 h-[102.632px] w-[248.985px] -translate-x-1/2 rounded-full bg-[#FFC247] blur-[55.118106842041016px]"></div>
+          {/* <div className="mix-blend-plus-lighter-override absolute bottom-[-15%] left-1/2 z-0 h-[102.632px] w-full -translate-x-1/2 rounded-full bg-[#FFC247] blur-[55.118106842041016px]"></div> */}
         </div>
         <div className="relative z-10 flex flex-col gap-8 px-5">
           <div className="flex flex-col items-center gap-3 px-4">
-            <h1 className="golden-text text-base font-semibold tracking-[-0.4px]">
-              {progress}%
-            </h1>
             <div className="mb-4 h-4 w-full rounded-lg border border-[#FEE45A]">
               <div
                 style={{
