@@ -48,15 +48,15 @@ const InviteButton = () => {
     <div className="flex w-full flex-row gap-2">
       <ButtonClaim
         title="Invite friends"
-        className="claim-button"
+        className="claim-button whitespace-nowrap text-[14px] font-semibold leading-4"
         onClick={handleShareReferralLink}
       />
 
       <button
-        className=" flex h-[56px] w-[56px] items-center justify-center rounded-[12px] bg-[linear-gradient(140.91deg,#FFF1C4_9.31%,#FEAD1B_83.97%);]"
+        className=" flex h-[46px] w-[46px] items-center justify-center rounded-[12px] bg-[linear-gradient(140.91deg,#FFF1C4_9.31%,#FEAD1B_83.97%);]"
         onClick={handleCopyReferralLink}
       >
-        <GoLink size={24} />
+        <GoLink size={20} />
       </button>
     </div>
   )

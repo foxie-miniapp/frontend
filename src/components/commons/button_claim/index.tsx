@@ -15,13 +15,13 @@ const ButtonClaim = ({
   return (
     <div
       className={`group relative inline-flex  w-full flex-1
-        ${disabled ? 'opacity-50' : 'hover:cursor-pointer'} `}
+        ${disabled ? '' : 'hover:cursor-pointer'} `}
     >
       <div
         className={`absolute -inset-px rounded-xl bg-gradient-to-b from-gray-600 to-[#fff] opacity-70 blur-lg
           ${
             disabled
-              ? 'opacity-0'
+              ? ''
               : 'duration-1000 group-hover:-inset-1 group-hover:opacity-100 group-hover:duration-200'
           }`}
       ></div>

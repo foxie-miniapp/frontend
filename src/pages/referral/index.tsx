@@ -135,7 +135,7 @@ const ReferralPage = () => {
           )}
         </div>
       </div>
-      <div className="sticky bottom-0 z-10 flex  w-full flex-row items-center gap-2 bg-[#0F010B] pb-8 pt-2">
+      <div className="sticky bottom-0 z-10 flex  w-full flex-row items-center gap-2 py-2">
         <InviteButton />
       </div>
     </div>
