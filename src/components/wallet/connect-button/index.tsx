@@ -42,7 +42,7 @@ const ConnectWallet = () => {
     return (
       <>
         <div className="flex flex-row items-center gap-3 rounded-[16px] bg-[linear-gradient(0deg,rgba(241,236,212,0.08),rgba(241,236,212,0.08)),linear-gradient(90deg,rgba(254,228,90,0.2)_0%,rgba(254,228,90,0)_100%);] px-2 py-4 ">
-          <p className="flex-1 text-start text-[16px] font-semibold text-[#FFB625]">
+          <p className="flex-1 pl-2 text-start text-[16px] font-semibold text-[#FFB625]">
             {truncateAddress(address)}
           </p>
           <button
@@ -52,9 +52,9 @@ const ConnectWallet = () => {
             Disconnect
           </button>
         </div>
-        <div className="text-center text-base text-[#FFB625]">
+        {/* <div className="text-center text-base text-[#FFB625]">
           {isLoadingBalance ? '...' : ` Balance: ${balance.toFixed(2)} TON`}
-        </div>
+        </div> */}
       </>
     )
   }

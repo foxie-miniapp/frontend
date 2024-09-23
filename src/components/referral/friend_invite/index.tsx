@@ -33,10 +33,6 @@ const FriendList = (props: FriendListProps) => {
           {localeNumber(point)}
         </div>
       </div>
-
-      <button className="rounded-full bg-[#FFFFFF1F] px-6 py-2 text-[#FFF1C4]">
-        Claim
-      </button>
     </div>
   )
 }
