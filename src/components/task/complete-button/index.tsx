@@ -32,16 +32,18 @@ const CompleteButton = (props: CompleteButtonProps) => {
 
   return (
     <>
-      {questType === QuestType.LINK && url && (
-        <LinkButton
-          callCompleteQuest={() => {
-            _completeQuest({
-              questId
-            })
-          }}
-          questUrl={url}
-        />
-      )}
+      {(questType === QuestType.LINK ||
+        questType === QuestType.JOIN_GROUP_TELEGRAM) &&
+        url && (
+          <LinkButton
+            callCompleteQuest={() => {
+              _completeQuest({
+                questId
+              })
+            }}
+            questUrl={url}
+          />
+        )}
       {questType === QuestType.ON_CHAIN && (
         <SendButton callCompleteQuest={_completeQuest} questId={questId} />
       )}
