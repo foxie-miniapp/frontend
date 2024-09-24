@@ -112,9 +112,7 @@ const ReferralPage = () => {
 
         <div className="flex flex-row items-center justify-between rounded-[12px] bg-[#F1ECD414] p-3 text-[14px] text-[#FFF1C4]">
           You invited people{' '}
-          <p className="font-semibold text-[#FFB625]">
-            {data?.pagination.totalItems || 0}
-          </p>
+          <p className="font-semibold text-[#FFB625]">{data?.length || 0}</p>
         </div>
         <div className="flex flex-1 flex-col gap-2 overflow-y-auto">
           {isLoading ? (
@@ -124,7 +122,7 @@ const ReferralPage = () => {
               <TaskSkeletonLoader />
             </>
           ) : (
-            data?.data?.map((friend) => (
+            data?.map((friend) => (
               <FriendList
                 key={friend._id}
                 name={friend.username}

@@ -1,4 +1,12 @@
-import { FaTwitter } from 'react-icons/fa'
+import {
+  FaDiscord,
+  FaFacebook,
+  FaGem,
+  FaInstagram,
+  FaTelegram,
+  FaTwitter,
+  FaYoutube
+} from 'react-icons/fa'
 
 import { Quest, QuestLogo, QuestStatus } from '@/store/quest.store'
 
@@ -16,6 +24,12 @@ const SingleTask = ({ task }: SingleTaskProps) => {
         <div className="flex h-11 w-11 items-center justify-center overflow-hidden rounded-full border border-[rgba(255,255,255,0.2)] bg-[radial-gradient(101.3%_100%_at_50%_100%,rgba(255,183,32,0.35)_0%,rgba(255,241,213,0.08)_73.5%)] text-white transition-transform duration-300 ease-in-out hover:scale-110">
           <div className="max-h-[24px] max-w-[24px]">
             {task.logo === QuestLogo.X && <FaTwitter size={24} />}
+            {task.logo === QuestLogo.DISCORD && <FaDiscord size={24} />}
+            {task.logo === QuestLogo.FACEBOOK && <FaFacebook size={24} />}
+            {task.logo === QuestLogo.INSTAGRAM && <FaInstagram size={24} />}
+            {task.logo === QuestLogo.TELEGRAM && <FaTelegram size={24} />}
+            {task.logo === QuestLogo.YOUTUBE && <FaYoutube size={24} />}
+            {task.logo === QuestLogo.TON && <FaGem size={24} />}
           </div>
         </div>
         <div className="flex flex-col items-start gap-1">

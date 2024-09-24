@@ -1,7 +1,5 @@
 import { User } from '@/store/user.store'
 
-import { Pagination } from './common'
-
 export type UserLoginPayload = {
   initData: string
   telegramId: string | number
@@ -29,10 +27,7 @@ export type Referent = {
   photoUrl?: string
 }
 
-export type ReferentsResponse = {
-  data: Referent[]
-  pagination: Pagination
-}
+export type ReferentsResponse = Referent[]
 
 export type LeaderboardResponse = {
   data: {

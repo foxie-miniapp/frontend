@@ -204,9 +204,6 @@ const HomePage = () => {
           </div>
 
           <div className="relative z-20 flex w-full flex-col items-center gap-1">
-            {/* <h1 className="token-text text-[40px] font-bold">
-              {localeNumber(Number(user?.points))}
-            </h1> */}
             <Counter
               value={user.points}
               className="token-text text-[32px] font-bold"

@@ -31,16 +31,14 @@ const RankingItem = ({
       ${isMe === true && 'border border-[#FE9738]'}
       `}
     >
-        <Avatar
-          src={photoUrl || ''}
-          alt={username}
-          size="md"
-          fallback={
-            firstName && lastName
-              ? `${firstName[0]}${lastName[0]}`
-              : username[0]
-          }
-        />
+      <Avatar
+        src={photoUrl || ''}
+        alt={username}
+        size="md"
+        fallback={
+          firstName && lastName ? `${firstName[0]}${lastName[0]}` : username[0]
+        }
+      />
       <div className="flex flex-1 flex-col gap-1">
         <div className="flex items-center gap-2">
           <h2 className="truncate text-sm text-[#FFF1C4]">{username}</h2>

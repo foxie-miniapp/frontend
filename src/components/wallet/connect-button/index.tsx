@@ -7,7 +7,6 @@ import {
 import { useEffect } from 'react'
 import { IoChevronForward } from 'react-icons/io5'
 
-import { useTonBalance } from '@/hooks/use-balance'
 import { truncateAddress } from '@/lib/utils/string'
 import { updateWalletAddress } from '@/services/user'
 import useUser from '@/store/user.store'
@@ -26,7 +25,6 @@ const ConnectWallet = () => {
   const { open } = useTonConnectModal()
   const address = useTonAddress()
   const [tonWallet] = useTonConnectUI()
-  const { balance, loading: isLoadingBalance } = useTonBalance()
 
   const handleConnect = () => {
     open()
@@ -52,9 +50,6 @@ const ConnectWallet = () => {
             Disconnect
           </button>
         </div>
-        {/* <div className="text-center text-base text-[#FFB625]">
-          {isLoadingBalance ? '...' : ` Balance: ${balance.toFixed(2)} TON`}
-        </div> */}
       </>
     )
   }
