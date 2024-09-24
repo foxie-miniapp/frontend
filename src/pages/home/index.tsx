@@ -87,7 +87,7 @@ const HomePage = () => {
     }
   })
 
-  const [claimedDailyReward, setClaimedDailyReward] = useState(false)
+  const [claimedDailyReward, setClaimedDailyReward] = useState(true)
   useEffect(() => {
     dailyReward().then((res) => {
       setClaimedDailyReward(res.claimed)
