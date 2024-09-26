@@ -144,10 +144,11 @@ const Bottom = () => {
         >
           <route.icon active={currentRoute.route === route.route} />
           <div
-            className={`text-xs ${currentRoute.route === route.route
+            className={`text-xs ${
+              currentRoute.route === route.route
                 ? 'text-[#FFF1C4]'
                 : 'text-[#807C71]'
-              }`}
+            }`}
           >
             {route.name}
           </div>

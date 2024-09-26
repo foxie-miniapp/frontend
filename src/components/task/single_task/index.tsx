@@ -33,7 +33,7 @@ const SingleTask = ({ task }: SingleTaskProps) => {
           </div>
         </div>
         <div className="flex flex-col items-start gap-1">
-          <p className="text-[14px] font-normal text-[#FFF1C4] transition-colors duration-300 ease-in-out hover:text-white">
+          <p className="truncate text-[14px] font-normal text-[#FFF1C4] transition-colors duration-300 ease-in-out hover:text-white">
             {task.title}
           </p>
           <div className="flex flex-row items-center gap-1 text-[14px] font-medium text-[#FFB625] transition-all duration-300 ease-in-out hover:gap-2">

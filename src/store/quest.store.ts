@@ -14,6 +14,7 @@ export enum QuestLogo {
 export enum QuestType {
   LINK = 'link',
   INVITE_FRIEND = 'invite_friend',
+  CONNECT_WALLET = 'connect_wallet',
   JOIN_GROUP_TELEGRAM = 'join_group_telegram',
   ON_CHAIN = 'on_chain'
 }

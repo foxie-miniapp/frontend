@@ -5,6 +5,7 @@ import { CompleteQuestPayload } from '@/lib/types/quest-action'
 import { completeQuest } from '@/services/quest'
 import useQuest, { QuestStatus, QuestType } from '@/store/quest.store'
 
+import ConnectButton from './connect-button'
 import InviteButton from './invite-button'
 import LinkButton from './link-button'
 import SendButton from './send-button'
@@ -48,6 +49,7 @@ const CompleteButton = (props: CompleteButtonProps) => {
         <SendButton callCompleteQuest={_completeQuest} questId={questId} />
       )}
       {questType === QuestType.INVITE_FRIEND && <InviteButton />}
+      {questType === QuestType.CONNECT_WALLET && <ConnectButton />}
     </>
   )
 }
