@@ -8,6 +8,7 @@ import viteSvgr from 'vite-plugin-svgr'
 import tsconfigPaths from 'vite-tsconfig-paths'
 
 export default defineConfig({
+  base: '/',
   plugins: [
     react(),
     eslintPlugin(),
@@ -15,6 +16,16 @@ export default defineConfig({
     tsconfigPaths(),
     nodePolyfills()
   ],
+  preview: {
+    port: 8080,
+    strictPort: true
+  },
+  server: {
+    port: 8080,
+    strictPort: true,
+    host: true,
+    origin: 'http://0.0.0.0:8080'
+  },
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src')
