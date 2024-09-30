@@ -8,7 +8,7 @@ const TonProvider = ({ children }: TonProviderProps) => {
   return (
     <TonConnectUIProvider
       //change when deploying to production
-      manifestUrl={`https://www.foxiee.fun/tonconnect-manifest.json`}
+      manifestUrl={`https://foxiee.fun/tonconnect-manifest.json`}
       walletsListConfiguration={{
         includeWallets: [
           {
